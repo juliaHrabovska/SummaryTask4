@@ -18,6 +18,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Interacts with database. Operates Application data
+ *
+ * @author Y. Hrabovska
+ */
 public class ApplicationDAO {
 
     private static final Logger LOG = Logger.getLogger(ApplicationDAO.class);
@@ -164,7 +169,7 @@ public class ApplicationDAO {
     }
 
     /**
-     * insert certificate path in database
+     * Create new application in database
      *
      * @param cathedra_id - cathedra's id
      * @param enrollee_id - enrollee's id
@@ -298,6 +303,13 @@ public class ApplicationDAO {
         return applicationBeanList;
     }
 
+    /**
+     * Get list results
+     *
+     * @param cathedra_id - cathedra id
+     * @return Map<String,Integer> - exam name, mark
+     * @throws DBException
+     */
     public Map<String, Integer> getListResults(long enrollee_id, long cathedra_id) throws DBException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;

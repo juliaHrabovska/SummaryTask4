@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * User page command
+ *
+ * @author Y. Hrabovska
+ */
 public class UserPageCommand extends Command {
     private static final Logger LOG = Logger.getLogger(UserPageCommand.class);
 

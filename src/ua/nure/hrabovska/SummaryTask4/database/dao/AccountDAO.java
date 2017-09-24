@@ -1,6 +1,6 @@
 package ua.nure.hrabovska.SummaryTask4.database.dao;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.database.DBManager;
 import ua.nure.hrabovska.SummaryTask4.database.Field;
@@ -13,9 +13,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
+/**
+ * Interacts with database. Operates Account data
+ *
+ * @author Y. Hrabovska
+ */
 public class AccountDAO {
 
     private static final Logger LOG = Logger.getLogger(AccountDAO.class);

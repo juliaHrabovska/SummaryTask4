@@ -25,6 +25,12 @@ import java.text.ParseException;
 
 import static ua.nure.hrabovska.SummaryTask4.enums.Role.CLIENT;
 
+/**
+ * Registration command
+ *
+ * @author Y. Hrabovska
+ *
+ */
 public class RegistrationCommand extends Command {
     private static final Logger LOG = Logger.getLogger(RegistrationCommand.class);
 

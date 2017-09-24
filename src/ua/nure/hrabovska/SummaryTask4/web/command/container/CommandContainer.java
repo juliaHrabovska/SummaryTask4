@@ -24,6 +24,11 @@ import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.SubmittedAppComm
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Holder of all commands
+ *
+ * @author Y. Hrabovska
+ */
 public class CommandContainer {
 
     private static final Logger LOG = Logger.getLogger(CommandContainer.class);
@@ -33,29 +38,37 @@ public class CommandContainer {
     static {
         // account commands
         commands.put("login", new LoginCommand());
-        commands.put("registration", new RegistrationCommand());
         commands.put("logout", new LogoutCommand());
 
-        commands.put("showPlace", new ShowPlaceCommand());
-        commands.put("showUniversity", new ShowUniversityCommand());
-        commands.put("universityPage", new ShowUniversityPageCommand());
-        commands.put("contest", new ContestCommand());
-
-        commands.put("submitted_applications", new SubmittedAppCommand());
-        commands.put("deleteApp", new DeleteAppCommand());
-        commands.put("editProfile", new EditProfileCommand());
-
-        commands.put("personal_area_client", new LinkPageCommand(Path.PERSONAL_AREA_CLIENT));
-        commands.put("settings", new LinkPageCommand(Path.SETTINGS_CLIENT));
+        // registration commands
+        commands.put("registration", new RegistrationCommand());
         commands.put("getRegistrationPage", new LinkPageCommand(Path.REGISTRATION_PAGE));
         commands.put("showExamList", new ShowExamListCommand());
         commands.put("showChosenExamList", new ShowChosenExamListCommand());
         commands.put("fillExRes", new ExamFillingCommand());
+
+        // filling applications commands
+        commands.put("showPlace", new ShowPlaceCommand());
+        commands.put("showUniversity", new ShowUniversityCommand());
+        commands.put("universityPage", new ShowUniversityPageCommand());
+        commands.put("contest", new ContestCommand());
         commands.put("apply", new ApplyCommand());
+
+        // enrollee's commands
+        commands.put("submitted_applications", new SubmittedAppCommand());
+        commands.put("deleteApp", new DeleteAppCommand());
+        commands.put("editProfile", new EditProfileCommand());
+
+        // admin's commands
         commands.put("showUser", new ShowUsersCommand());
         commands.put("ban_unbanUser", new BanUserCommand());
         commands.put("changeStatus", new ChangeStatusCommand());
         commands.put("enrolleeInfo", new UserPageCommand());
+
+        // link commands
+        commands.put("settings", new LinkPageCommand(Path.SETTINGS_CLIENT));
+        commands.put("personal_area_client", new LinkPageCommand(Path.PERSONAL_AREA_CLIENT));
+
     }
 
     /**

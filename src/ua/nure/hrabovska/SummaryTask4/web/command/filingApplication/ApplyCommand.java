@@ -19,6 +19,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Apply command
+ *
+ * @author Y. Hrabovska
+ */
 public class ApplyCommand extends Command {
     private static final Logger LOG = Logger.getLogger(ApplyCommand.class);
 

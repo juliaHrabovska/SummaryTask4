@@ -11,6 +11,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interacts with database. Operates Place data
+ *
+ * @author Y. Hrabovska
+ */
 public class PlaceDAO {
 
     private static final Logger LOG = Logger.getLogger(PlaceDAO.class);

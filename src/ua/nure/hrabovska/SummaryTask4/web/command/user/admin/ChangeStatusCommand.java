@@ -18,6 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Change status command
+ *
+ * @author Y. Hrabovska
+ */
 public class ChangeStatusCommand extends Command {
     private static final Logger LOG = Logger.getLogger(ChangeStatusCommand.class);
 

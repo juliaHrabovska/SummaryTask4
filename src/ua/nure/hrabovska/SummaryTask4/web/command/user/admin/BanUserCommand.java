@@ -13,8 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Ban user command
+ *
+ * @author Y. Hrabovska
+ */
 public class BanUserCommand extends Command {
     private static final Logger LOG = Logger.getLogger(BanUserCommand.class);
+
     @Override
     public PageData execute(HttpServletRequest request, HttpServletResponse response) throws IOException,
             ServletException, DBException {
@@ -37,25 +43,5 @@ public class BanUserCommand extends Command {
         LOG.debug("Command is completed with error");
         return new PageData(Path.ERROR_PAGE, true);
     }
-//        LOG.debug("Command starts");
-//        String[] enrolleeId = request.getParameterValues("enrolleeId");
-//        LOG.trace("Set the request parameter: enrolleeId --> " + Arrays.toString(enrolleeId));
-//
-//        AccountDAO accountDAO = new AccountDAO();
-//        Map<Long, Boolean> accounts = accountDAO.getAccountById(enrolleeId);
-//        LOG.trace("Found in DB accounts --> " + accounts);
-//
-//        for (Map.Entry<Long, Boolean> entry : accounts.entrySet()) {
-//            boolean value = entry.getValue();
-//            accounts.put(entry.getKey(), !value);
-//        }
-//
-//        if (accountDAO.updateBanned(accounts)) {
-//            LOG.debug("Commands finished");
-//            return new PageData("/controller?command=showUser",false);
-//        }
-//
-//        LOG.debug("Command is completed with error");
-//        return new PageData(Path.ERROR_PAGE, true);
-//    }
+
 }

@@ -20,6 +20,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * File upload command
+ *
+ * @author Y. Hrabovska
+ *
+ */
 public class FileUploadCommand extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(FileUploadCommand.class);

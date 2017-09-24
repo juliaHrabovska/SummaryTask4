@@ -20,6 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Login command
+ *
+ * @author Y. Hrabovska
+ *
+ */
 public class LoginCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(LoginCommand.class);

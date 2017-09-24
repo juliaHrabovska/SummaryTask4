@@ -15,6 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Interacts with database. Operates Result data
+ *
+ * @author Y. Hrabovska
+ */
 public class ResultDAO {
 
     private static final Logger LOG = Logger.getLogger(ResultDAO.class);
@@ -39,6 +44,13 @@ public class ResultDAO {
 
     private Connection connection;
 
+    /**
+     * Insert enrollee's results in database
+     *
+     * @param enrollee - enrollee
+     * @return true - if operation completed successfully
+     * @throws DBException
+     */
     public boolean insertResult(Map<Long, Integer> results, Enrollee enrollee) throws DBException {
         boolean result = true;
         PreparedStatement statement = null;
@@ -67,6 +79,14 @@ public class ResultDAO {
         return result;
     }
 
+    /**
+     * Get count appropriate exams
+     *
+     * @param cathedra_id - cathedra's id
+     * @param enrollee_id - enrollee's id
+     * @return List of results
+     * @throws DBException
+     */
     public int getCountAppropriateExam(long cathedra_id, Long enrollee_id) throws DBException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;

@@ -16,6 +16,12 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Exam filling command
+ *
+ * @author Y. Hrabovska
+ *
+ */
 public class ExamFillingCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(ExamFillingCommand.class);

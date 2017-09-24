@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Contest command
+ *
+ * @author Y. Hrabovska
+ */
 public class ContestCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(ContestCommand.class);

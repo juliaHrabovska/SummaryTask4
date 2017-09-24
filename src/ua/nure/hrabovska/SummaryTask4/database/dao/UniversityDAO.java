@@ -11,6 +11,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interacts with database. Operates University data
+ *
+ * @author Y. Hrabovska
+ */
 public class UniversityDAO {
 
     private static final Logger LOG = Logger.getLogger(UniversityDAO.class);

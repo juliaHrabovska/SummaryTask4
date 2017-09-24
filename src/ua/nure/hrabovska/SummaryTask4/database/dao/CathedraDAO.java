@@ -11,6 +11,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interacts with database. Operates Cathedra data
+ *
+ * @author Y. Hrabovska
+ */
 public class CathedraDAO {
 
     private static final Logger LOG = Logger.getLogger(CathedraDAO.class);
@@ -118,53 +123,6 @@ public class CathedraDAO {
         }
         return cathedraBeanList;
     }
-
-//    public List<String> getListRequirements(long cathedra_id) throws DBException {
-//        PreparedStatement statement = null;
-//        ResultSet resultSet = null;
-//        List<String> requirements= new ArrayList<>();
-//        try {
-//            connection = DBManager.getConnection();
-//            statement = connection.prepareStatement(GET_LIST_REQUIREMENTS);
-//            statement.setLong(1, cathedra_id);
-//            resultSet = statement.executeQuery();
-//            while (resultSet.next()) {
-//                requirements.add(extractRequirements(resultSet));
-//            }
-//        } catch (SQLException ex) {
-//            LOG.error(Message.CANNOT_GET_REQUIREMENTS, ex);
-//            throw new DBException(Message.CANNOT_GET_REQUIREMENTS, ex);
-//        } finally {
-//            DBManager.closeStatement(statement);
-//            DBManager.closeResultSet(resultSet);
-//            DBManager.closeConnection(connection);
-//        }
-//        return requirements;
-//    }
-
-//    public int getContestByCathedra_id(long cathedra_id, int status_id) throws DBException {
-//        PreparedStatement statement = null;
-//        ResultSet resultSet = null;
-//        int contest = -1;
-//        try {
-//            connection = DBManager.getConnection();
-//            statement = connection.prepareStatement(GET_CONTEST);
-//            statement.setLong(1, cathedra_id);
-//            statement.setInt(2, status_id);
-//            resultSet = statement.executeQuery();
-//            if (resultSet.next()) {
-//                contest = resultSet.getInt(Field.CONTEST);
-//            }
-//        } catch (SQLException e) {
-//            LOG.error(Message.CANNOT_GET_CONTEST_BY_CATHEDRA_ID, e);
-//            throw new DBException(Message.CANNOT_GET_CONTEST_BY_CATHEDRA_ID, e);
-//        } finally {
-//            DBManager.closeStatement(statement);
-//            DBManager.closeResultSet(resultSet);
-//            DBManager.closeConnection(connection);
-//        }
-//        return contest;
-//    }
 
     private String extractRequirements(ResultSet resultSet) throws SQLException {
         return resultSet.getString(Field.EXAM_NAME);

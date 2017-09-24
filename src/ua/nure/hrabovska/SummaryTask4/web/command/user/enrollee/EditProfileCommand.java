@@ -21,6 +21,11 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Edit profile command
+ *
+ * @author Y. Hrabovska
+ */
 public class EditProfileCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(EditProfileCommand.class);

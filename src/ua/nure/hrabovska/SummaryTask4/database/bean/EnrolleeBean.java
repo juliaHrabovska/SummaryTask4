@@ -2,6 +2,15 @@ package ua.nure.hrabovska.SummaryTask4.database.bean;
 
 import ua.nure.hrabovska.SummaryTask4.database.entity.Entity;
 
+/**
+ * Provide records for virtual table:
+ * <pre>
+ * |enrollee.first_name|enrollee.last_name|enrollee.patronymic|enrollee.certificate_score|
+ *      |enrollee.level|enrollee.certificate_path|enrollee.is_banned|
+ * </pre>
+ *
+ * @author Y. Hrabovska
+ */
 public class EnrolleeBean extends Entity {
 
     private String first_name;

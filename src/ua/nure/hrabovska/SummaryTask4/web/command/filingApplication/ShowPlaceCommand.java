@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Show places command
+ *
+ * @author Y. Hrabovska
+ */
 public class ShowPlaceCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(ShowPlaceCommand.class);

@@ -1,5 +1,10 @@
 package ua.nure.hrabovska.SummaryTask4.web;
 
+/**
+ * Request attribute and parameter names
+ *
+ * @author Y. Hrabovska
+ */
 public class RequestProperty {
 
     public static final String EMAIL = "email";
@@ -21,10 +26,17 @@ public class RequestProperty {
 
     public static final String CATHEDRA_LIST = "cathedra_list";
     public static final String CONTEST = "contest";
+
     public static final String SUBMITTED_APP = "submitted_app";
+
     public static final String EXAM_LIST = "exam_list";
+
     public static final String LEVEL_OF_TRAINING = "level_of_training";
+
     public static final String CATHEDRA_ID = "cathedra_id";
+
     public static final String ENROLLEE_LIST = "enrollee_list";
+
     public static final String ENROLLEE_ID = "enrollee_id";
+
 }

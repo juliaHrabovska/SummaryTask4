@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.Arrays;
 
+/**
+ * Delete application command
+ *
+ * @author Y. Hrabovska
+ */
 public class DeleteAppCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(DeleteAppCommand.class);
@@ -39,12 +44,12 @@ public class DeleteAppCommand extends Command {
         }
 
         if (applicationDAO.deleteApp(cathedra_id_long, enrollee.getId())) {
-                LOG.trace("All chosen books were deleted");
-                LOG.debug("Commands finished");
-                return pd;
-            }
-
-            LOG.debug("Command is completed with error");
+            LOG.trace("All chosen books were deleted");
+            LOG.debug("Commands finished");
             return pd;
         }
+
+        LOG.debug("Command is completed with error");
+        return pd;
     }
+}

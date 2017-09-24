@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Main controller servlet
+ *
+ * @author Y. Hrabovska
+ */
 @MultipartConfig
 public class Controller extends HttpServlet {
 

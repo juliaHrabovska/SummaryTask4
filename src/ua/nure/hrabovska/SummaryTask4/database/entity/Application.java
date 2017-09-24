@@ -1,5 +1,10 @@
 package ua.nure.hrabovska.SummaryTask4.database.entity;
 
+/**
+ * Application entity
+ *
+ * @author Y. Hrabovska
+ */
 public class Application {
     private long enrollee_id;
 

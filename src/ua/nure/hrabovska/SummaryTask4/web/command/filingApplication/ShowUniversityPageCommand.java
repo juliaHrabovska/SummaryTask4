@@ -17,6 +17,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Show university page command
+ *
+ * @author Y. Hrabovska
+ */
 public class ShowUniversityPageCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(ShowUniversityPageCommand.class);

@@ -1,5 +1,10 @@
 package ua.nure.hrabovska.SummaryTask4.web;
 
+/**
+ * Web pages paths
+ *
+ * @author Y. Hrabovska
+ */
 public class Path {
     public static final String PERSONAL_AREA_CLIENT = "/WEB-INF/jsp/account/client/personal_area_client.jsp";
     public static final String LOGIN_PAGE = "index.jsp";

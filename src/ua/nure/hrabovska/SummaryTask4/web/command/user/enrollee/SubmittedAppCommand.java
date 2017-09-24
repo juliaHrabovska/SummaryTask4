@@ -18,6 +18,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Submitted application command
+ *
+ * @author Y. Hrabovska
+ */
 public class SubmittedAppCommand extends Command {
     private static final Logger LOG = Logger.getLogger(SubmittedAppCommand.class);
 

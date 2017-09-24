@@ -13,6 +13,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interacts with database. Operates Enrollee data
+ *
+ * @author Y. Hrabovska
+ */
 public class EnrolleeDAO {
 
     private static final Logger LOG = Logger.getLogger(EnrolleeDAO.class);
@@ -48,7 +53,7 @@ public class EnrolleeDAO {
     private Connection connection;
 
     /**
-     * Get enrollees
+     * Get all enrollees
      *
      * @return List<Enrollee>
      * @throws DBException
@@ -106,7 +111,7 @@ public class EnrolleeDAO {
     }
 
     /**
-     * insert certificate path in database
+     * Insert certificate path in database
      *
      * @param path - certificate path to insert
      * @return true if operation was successful

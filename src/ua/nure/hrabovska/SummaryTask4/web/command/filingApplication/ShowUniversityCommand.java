@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * Show universities command
+ *
+ * @author Y. Hrabovska
+ */
 public class ShowUniversityCommand extends Command {
     private static final Logger LOG = Logger.getLogger(ShowUniversityCommand.class);
 

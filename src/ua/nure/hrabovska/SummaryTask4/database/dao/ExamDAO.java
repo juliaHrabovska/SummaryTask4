@@ -14,6 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interacts with database. Operates Exam data
+ *
+ * @author Y. Hrabovska
+ */
 public class ExamDAO {
 
     private static final Logger LOG = Logger.getLogger(ExamDAO.class);
