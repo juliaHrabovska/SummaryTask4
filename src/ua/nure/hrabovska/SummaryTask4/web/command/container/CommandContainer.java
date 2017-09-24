@@ -13,10 +13,7 @@ import ua.nure.hrabovska.SummaryTask4.web.command.account.registration.Registrat
 import ua.nure.hrabovska.SummaryTask4.web.command.account.registration.ShowChosenExamListCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.filingApplication.*;
 import ua.nure.hrabovska.SummaryTask4.web.command.link.LinkPageCommand;
-import ua.nure.hrabovska.SummaryTask4.web.command.user.admin.BanUserCommand;
-import ua.nure.hrabovska.SummaryTask4.web.command.user.admin.ChangeStatusCommand;
-import ua.nure.hrabovska.SummaryTask4.web.command.user.admin.ShowUsersCommand;
-import ua.nure.hrabovska.SummaryTask4.web.command.user.admin.UserPageCommand;
+import ua.nure.hrabovska.SummaryTask4.web.command.user.admin.*;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.DeleteAppCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.EditProfileCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.SubmittedAppCommand;
@@ -64,6 +61,7 @@ public class CommandContainer {
         commands.put("ban_unbanUser", new BanUserCommand());
         commands.put("changeStatus", new ChangeStatusCommand());
         commands.put("enrolleeInfo", new UserPageCommand());
+        commands.put("changeCathedra", new ChangeCathedraCommand());
 
         // link commands
         commands.put("settings", new LinkPageCommand(Path.SETTINGS_CLIENT));

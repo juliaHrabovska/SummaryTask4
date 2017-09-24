@@ -3,6 +3,6 @@
     <ul>
         <li><a href="controller?command=allUsers">All users</a></li>
         <li><a href="controller?command=showPlace">Applications</a></li>
-        <li><a href="controller?command=cathedras">Cathedras</a></li>
+        <li><a href="controller?command=showPlace">Cathedra info</a></li>
     </ul>
 </div>

@@ -13,7 +13,14 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/jspf/header.jspf" %>
-<%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+<c:choose>
+    <c:when test="${account.getRole_id().getName() == 'admin' }">
+        <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
+    </c:when>
+    <c:when test="${account.getRole_id().getName() == 'client'}">
+        <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+    </c:when>
+</c:choose>
 <div class="content">
     <c:forEach var="university" items="${university_list}">
         <a href="controller?command=universityPage&university_id=${university.id}">${university.name}</a>

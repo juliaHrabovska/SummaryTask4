@@ -47,8 +47,103 @@ public class CathedraDAO {
             "   cathedra_id = ? " +
             "AND" +
             "   status_id = ?";
+    private static final String UPDATE_CATHEDRA = "UPDATE cathedra SET name=? WHERE id=?";
+    private static final String UPDATE_VOLUME = "UPDATE licensed_volume SET budget=?, contract=? " +
+            "WHERE id=(SELECT licensed_volume_id FROM cathedra WHERE id=?)";
+    
+    private static final String DELETE_CATHEDRA = "DELETE FROM cathedra WHERE id=?";
 
     private Connection connection;
+
+    /**
+     * Delete cathedra from database
+     *
+     * @param cathedra_ids list - id of cathedra
+     * @return true if operation complete successful, false - otherwise
+     */
+    public boolean deleteCathdera(String[] cathedra_ids) throws DBException {
+        PreparedStatement statement = null;
+        boolean isDeleted = false;
+        int count = 0;
+        try {
+            connection = DBManager.getConnection();
+
+            connection.setAutoCommit(false);
+            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+            statement = connection.prepareStatement(DELETE_CATHEDRA);
+            for (String cathedra_id : cathedra_ids) {
+                statement.setLong(1, Long.parseLong(cathedra_id));
+
+                if (statement.executeUpdate() != 0) {
+                    count++;
+                }
+            }
+            if (count == cathedra_ids.length) {
+                isDeleted = true;
+            }
+        } catch (SQLException e) {
+            DBManager.rollback(connection);
+            LOG.error(Message.CANNOT_DELETE_APP, e);
+            throw new DBException(Message.CANNOT_DELETE_APP, e);
+        } finally {
+            DBManager.closeStatement(statement);
+            DBManager.closeConnection(connection);
+        }
+        return isDeleted;
+    }
+
+    /**
+     * Updates cathedra in the database
+     *
+     * @param cathedra_name cathedra_name
+     * @param budget - budget places
+     * @param contract - contract places
+     * @param cathedra_id - cathdra_id
+     * @return true if user was updated, false otherwise
+     * @throws DBException
+     */
+    public boolean changeCathedra(String cathedra_name, int budget, int contract, long cathedra_id) throws DBException {
+        PreparedStatement statement = null;
+        boolean isUpdated = false;
+        int count = 0;
+        try {
+            connection = DBManager.getConnection();
+
+            connection.setAutoCommit(false);
+            connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+            statement = connection.prepareStatement(UPDATE_CATHEDRA);
+            statement.setString(1, cathedra_name);
+            statement.setLong(2, cathedra_id);
+
+            if (statement.executeUpdate() != 0) {
+                count++;
+            }
+            statement = connection.prepareStatement(UPDATE_VOLUME);
+            statement.setInt(1, budget);
+            statement.setInt(2, contract);
+            statement.setLong(3, cathedra_id);
+            if (statement.executeUpdate() != 0) {
+                count++;
+            }
+
+            if (count == 2) {
+                isUpdated = true;
+            }
+
+            connection.commit();
+        } catch (SQLException e) {
+            DBManager.rollback(connection);
+            LOG.error(e.getMessage(), e);
+            throw new DBException(Message.CANNOT_UPDATE_CATHEDRA, e);
+        } finally {
+            DBManager.closeStatement(statement);
+            DBManager.closeConnection(connection);
+        }
+        return isUpdated;
+
+    }
 
     /**
      * Get CathedraBeanList
@@ -74,7 +169,7 @@ public class CathedraDAO {
 
                 cathedraBeanList.add(extractCathedraBean(resultSet));
 
-                List<String> requirements= new ArrayList<>();
+                List<String> requirements = new ArrayList<>();
                 preparedStatement = connection.prepareStatement(GET_LIST_REQUIREMENTS);
                 preparedStatement.setLong(1, cathedraBeanList.get(i).getId());
                 resultSet1 = preparedStatement.executeQuery();
@@ -153,5 +248,4 @@ public class CathedraDAO {
                 bean.getLicensed_volume_contract());
         return bean;
     }
-
 }

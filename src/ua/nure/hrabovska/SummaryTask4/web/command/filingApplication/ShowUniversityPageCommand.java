@@ -3,6 +3,8 @@ package ua.nure.hrabovska.SummaryTask4.web.command.filingApplication;
 import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.database.dao.CathedraDAO;
 import ua.nure.hrabovska.SummaryTask4.database.bean.CathedraBean;
+import ua.nure.hrabovska.SummaryTask4.database.entity.Account;
+import ua.nure.hrabovska.SummaryTask4.enums.Role;
 import ua.nure.hrabovska.SummaryTask4.exception.DBException;
 import ua.nure.hrabovska.SummaryTask4.web.Path;
 import ua.nure.hrabovska.SummaryTask4.web.RequestProperty;
@@ -25,6 +27,7 @@ import java.util.List;
 public class ShowUniversityPageCommand extends Command {
 
     private static final Logger LOG = Logger.getLogger(ShowUniversityPageCommand.class);
+
     @Override
     public PageData execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ParseException, DBException {
         LOG.debug("Commands starts");
@@ -43,6 +46,13 @@ public class ShowUniversityPageCommand extends Command {
 
         session.setAttribute("cathedraList", cathedraList);
         LOG.trace("Set session attribute cathedraList: cathedraList --> " + cathedraList);
+
+        Account account = (Account) session.getAttribute("account");
+
+        if (account.getRole_id() == Role.ADMIN) {
+            return new PageData(Path.CATHEDRA_INFO, true);
+
+        }
 
         LOG.debug("Commands finished");
         return new PageData(Path.UNIVERSITY_PAGE, true);

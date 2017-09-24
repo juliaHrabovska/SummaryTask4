@@ -41,4 +41,6 @@ public class Message {
     public static final String CANNOT_UPDATE_APPLICATION = "error.cannot.update.application";
     public static final String MAIL_SEND = "mail.was.sent";
     public static final String MAIL_NOT_SENT = "mail.wasnot.sent";
+    public static final String NOT_VALID_BUDGET_CONTRACT_FIELD = "error.not.valid.budget.contract.field";
+    public static final String CANNOT_UPDATE_CATHEDRA = "error.cannot.update.cathedra";
 }
