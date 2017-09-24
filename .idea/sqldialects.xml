@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/sql/test.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/AccountDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/ApplicationDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/CathedraDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/EnrolleeDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/ExamDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/ResultDAO.java" dialect="MySQL" />
+  </component>
+</project>

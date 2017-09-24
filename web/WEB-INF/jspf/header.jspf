@@ -1,0 +1,8 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+<fmt:setBundle basename="resources"/>
+<div class="header">
+    <p>Cabinet entrant</p>
+    <p align="right"><c:out value="${account.email}"/></p>
+</div>

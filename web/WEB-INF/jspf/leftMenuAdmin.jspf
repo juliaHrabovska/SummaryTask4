@@ -1,0 +1,8 @@
+<div class="menu">
+    <h1>Cabinet admin</h1>
+    <ul>
+        <li><a href="controller?command=allUsers">All users</a></li>
+        <li><a href="controller?command=showPlace">Applications</a></li>
+        <li><a href="controller?command=cathedras">Cathedras</a></li>
+    </ul>
+</div>

@@ -1,0 +1,9 @@
+<div class="menu">
+    <h1>Cabinet entrant</h1>
+    <ul>
+        <li><a href="controller?command=personal_area_client">Entrance data</a></li>
+        <li><a href="controller?command=showPlace">Filing applications</a></li>
+        <li><a href="controller?command=submitted_applications">Submitted applications</a></li>
+        <li><a href="controller?command=settings">Settings</a></li>
+    </ul>
+</div>
