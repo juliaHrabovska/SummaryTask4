@@ -33,12 +33,19 @@ public class ShowUniversityPageCommand extends Command {
         LOG.debug("Commands starts");
 
         HttpSession session = request.getSession();
-        int university_id = Integer.parseInt(request.getParameter("university_id"));
 
-        LOG.trace("Get parameter university_id: " + university_id);
+        Object university_id = session.getAttribute("university_id");
+        LOG.trace("Get attribute from session university_id: " + university_id);
+
+        if (university_id == null || university_id.equals("")) {
+            university_id = Long.parseLong(request.getParameter("university_id"));
+            LOG.trace("Get parameter university_id: " + university_id);
+            session.setAttribute("university_id", university_id);
+            LOG.trace("Set session attribute university_id: university_id --> " + university_id);
+        }
 
         CathedraDAO cathedraDAO = new CathedraDAO();
-        List<CathedraBean> cathedraList = cathedraDAO.getCathedraBeanByUniver_id(university_id);
+        List<CathedraBean> cathedraList = cathedraDAO.getCathedraBeanByUniver_id((long) university_id);
         LOG.trace("Get cathedraList from DB: " + cathedraList);
 
         request.setAttribute(RequestProperty.CATHEDRA_LIST, cathedraList);
@@ -51,7 +58,6 @@ public class ShowUniversityPageCommand extends Command {
 
         if (account.getRole_id() == Role.ADMIN) {
             return new PageData(Path.CATHEDRA_INFO, true);
-
         }
 
         LOG.debug("Commands finished");

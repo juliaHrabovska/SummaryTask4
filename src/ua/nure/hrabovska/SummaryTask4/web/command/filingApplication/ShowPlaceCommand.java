@@ -12,6 +12,7 @@ import ua.nure.hrabovska.SummaryTask4.web.command.PageData;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -28,6 +29,12 @@ public class ShowPlaceCommand extends Command {
     @Override
     public PageData execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ParseException, DBException {
         LOG.debug("Commands starts");
+
+        HttpSession session = request.getSession();
+        session.removeAttribute("university_id");
+        LOG.trace("Remove attribute from session: university_id");
+        session.removeAttribute("cathedraList");
+        LOG.trace("Remove attribute from session: cathedraList");
 
         PlaceDAO placeDAO = new PlaceDAO();
         List<Place> placeList = placeDAO.getAllPlaces();

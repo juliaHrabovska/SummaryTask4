@@ -126,7 +126,7 @@
                                             </td>
                                             <td>
                                                 <p>
-                                                    <a href="controller?command=delCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
+                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
                                             </td>
                                         </tr>
                                     </form>
@@ -146,6 +146,8 @@
                             <th>Contest</th>
                             <th>Volume</th>
                             <th>Requirements</th>
+                            <th>Change info</th>
+                            <th>Delete</th>
                         </tr>
                         <c:forEach var="cathedra" items="${cathedra_list}">
                             <c:choose>
@@ -194,7 +196,7 @@
                                             </td>
                                             <td>
                                                 <p>
-                                                    <a href="controller?command=delCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
+                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
                                             </td>
                                         </tr>
                                     </form>
@@ -229,6 +231,8 @@
                             <th>Contest</th>
                             <th>Volume</th>
                             <th>Requirements</th>
+                            <th>Change info</th>
+                            <th>Delete</th>
                         </tr>
                         <c:forEach var="cathedra" items="${cathedra_list}">
                             <c:choose>
@@ -277,7 +281,7 @@
                                             </td>
                                             <td>
                                                 <p>
-                                                    <a href="controller?command=delCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
+                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
                                             </td>
                                         </tr>
                                     </form>
@@ -296,6 +300,8 @@
                             <th>Contest</th>
                             <th>Volume</th>
                             <th>Requirements</th>
+                            <th>Change info</th>
+                            <th>Delete</th>
                         </tr>
                         <c:forEach var="cathedra" items="${cathedra_list}">
                             <c:choose>
@@ -344,7 +350,7 @@
                                             </td>
                                             <td>
                                                 <p>
-                                                    <a href="controller?command=delCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
+                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
                                             </td>
                                         </tr>
                                     </form>
@@ -360,7 +366,7 @@
 
     </div> <!-- #content-region -->
     <form action="controller" method="post">
-        <input type="hidden" name="newCathedra">
+        <input type="hidden" name="command" value="showExamList">
         <input type="submit" value="Add new">
     </form>
 </div>

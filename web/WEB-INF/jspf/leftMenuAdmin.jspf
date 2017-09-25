@@ -1,7 +1,7 @@
 <div class="menu">
     <h1>Cabinet admin</h1>
     <ul>
-        <li><a href="controller?command=allUsers">All users</a></li>
+        <li><a href="controller?command=showUser">All users</a></li>
         <li><a href="controller?command=showPlace">Applications</a></li>
         <li><a href="controller?command=showPlace">Cathedra info</a></li>
     </ul>

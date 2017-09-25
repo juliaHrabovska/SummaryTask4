@@ -22,4 +22,5 @@ public class Path {
     public static final String ENROLLEE_LIST = "/WEB-INF/jsp/account/admin/enrolleeList.jsp";
     public static final String USER_PAGE = "/WEB-INF/jsp/account/admin/enrolleePage.jsp";
     public static final String CATHEDRA_INFO = "/WEB-INF/jsp/account/admin/cathedra_info.jsp";
+    public static final String CREATE_CATHEDRA = "/WEB-INF/jsp/account/admin/createCathedra.jsp";
 }

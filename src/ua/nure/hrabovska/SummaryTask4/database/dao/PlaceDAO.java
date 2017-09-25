@@ -53,10 +53,10 @@ public class PlaceDAO {
     }
 
     /**
-     * Extracts a Genre object from result set
+     * Extracts a Place object from result set
      *
-     * @param resultSet Result set from which genre will be extract
-     * @return Genre object
+     * @param resultSet Result set from which place will be extract
+     * @return Place object
      * @throws SQLException
      */
     private Place extract(ResultSet resultSet) throws SQLException {

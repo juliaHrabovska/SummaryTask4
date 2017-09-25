@@ -29,6 +29,7 @@ public final class Field {
     public static final String CONTRACT = "contract";
     public static final String LEVEL = "level_of_training";
     public static final String DEPARTMENT = "department";
+    public static final String DEPARTMENT_ID = "department_id";
     public static final String TYPE = "type_of_training";
 
     public static final String EXAM_NAME = "exam";

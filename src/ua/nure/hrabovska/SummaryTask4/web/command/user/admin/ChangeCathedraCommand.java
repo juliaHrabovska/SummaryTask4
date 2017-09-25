@@ -12,6 +12,7 @@ import ua.nure.hrabovska.SummaryTask4.web.command.filingApplication.ShowUniversi
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 
@@ -48,15 +49,15 @@ public class ChangeCathedraCommand extends Command {
                 request.setAttribute(RequestProperty.ERROR, Message.All_OK);
 
                 request.setAttribute(RequestProperty.CATHEDRA_ID, cathedra_id);
-                PageData pd = new ShowUniversityPageCommand().execute(request, response);
+
                 LOG.debug("Command is completed successfully");
-                return pd;
+                return new PageData("/controller?command=universityPage", false);
             }
 
         }
         LOG.debug("Command is completed with error");
         request.setAttribute(RequestProperty.ERROR, Message.CANNOT_UPDATE_CATHEDRA);
-        return new ShowUniversityPageCommand().execute(request, response);
+        return new PageData("/controller?command=universityPage", false);
 
     }
 }

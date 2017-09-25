@@ -31,12 +31,16 @@ public class RequestProperty {
 
     public static final String EXAM_LIST = "exam_list";
 
-    public static final String LEVEL_OF_TRAINING = "level_of_training";
-
     public static final String CATHEDRA_ID = "cathedra_id";
 
     public static final String ENROLLEE_LIST = "enrollee_list";
 
     public static final String ENROLLEE_ID = "enrollee_id";
 
+    public static final String NAME = "name";
+    public static final String BUDGET = "budget";
+    public static final String CONTRACT = "contract";
+    public static final String TYPE_OF_TRAINING = "type_of_training";
+    public static final String LEVEL_OF_TRAINING = "level_of_training";
+    public static final String DEPARTMENTS = "departments";
 }

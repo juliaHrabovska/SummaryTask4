@@ -25,6 +25,8 @@ public class CathedraBean extends Entity implements Serializable {
 
     private String department_name;
 
+    private long department_id;
+
     private int licensed_volume_budget;
 
     private int licensed_volume_contract;
@@ -61,6 +63,14 @@ public class CathedraBean extends Entity implements Serializable {
 
     public void setDepartment_name(String department_name) {
         this.department_name = department_name;
+    }
+
+    public long getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(long department_id) {
+        this.department_id = department_id;
     }
 
     public int getLicensed_volume_budget() {
@@ -137,6 +147,7 @@ public class CathedraBean extends Entity implements Serializable {
                 + ", type_of_training=" + type_of_training
                 + ", level_of_training=" + level_of_training
                 + ", department_name=" + department_name
+                + ", department_id=" + department_id
                 + ", statement=" + statement
                 + ", recommended=" + recommended
                 + ", enlisted=" + enlisted

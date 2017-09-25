@@ -43,4 +43,10 @@ public class Message {
     public static final String MAIL_NOT_SENT = "mail.wasnot.sent";
     public static final String NOT_VALID_BUDGET_CONTRACT_FIELD = "error.not.valid.budget.contract.field";
     public static final String CANNOT_UPDATE_CATHEDRA = "error.cannot.update.cathedra";
+    public static final String CANNOT_DELETE_CATHEDRA = "error.cannot.delete.cathedra";
+    public static final String CANNOT_GET_ALL_EXAM = "error.cannot.get.all.exams";
+    public static final String CANNOT_FIND_DEPARTMENT = "error.cannot.find.department";
+    public static final String NOT_CHOSEN_DEPARTMENT = "error.not.chosen.department";
+    public static final String NOT_ENOUGH_EXAMS = "error.not.enough.exams";
+    public static final String CANNOT_CREATE_CATHEDRA = "error.cannot.create.cathedra";
 }

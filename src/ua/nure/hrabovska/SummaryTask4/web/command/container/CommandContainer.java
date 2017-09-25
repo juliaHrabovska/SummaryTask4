@@ -3,9 +3,8 @@ package ua.nure.hrabovska.SummaryTask4.web.command.container;
 import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.web.Path;
 import ua.nure.hrabovska.SummaryTask4.web.command.Command;
-import ua.nure.hrabovska.SummaryTask4.web.command.account.ShowExamListCommand;
+import ua.nure.hrabovska.SummaryTask4.web.command.account.ShowDepartments_ExamListCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.account.registration.ExamFillingCommand;
-import ua.nure.hrabovska.SummaryTask4.web.command.account.registration.FileUploadCommand;
 
 import ua.nure.hrabovska.SummaryTask4.web.command.account.LoginCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.account.LogoutCommand;
@@ -40,7 +39,7 @@ public class CommandContainer {
         // registration commands
         commands.put("registration", new RegistrationCommand());
         commands.put("getRegistrationPage", new LinkPageCommand(Path.REGISTRATION_PAGE));
-        commands.put("showExamList", new ShowExamListCommand());
+        commands.put("showExamList", new ShowDepartments_ExamListCommand());
         commands.put("showChosenExamList", new ShowChosenExamListCommand());
         commands.put("fillExRes", new ExamFillingCommand());
 
@@ -62,6 +61,8 @@ public class CommandContainer {
         commands.put("changeStatus", new ChangeStatusCommand());
         commands.put("enrolleeInfo", new UserPageCommand());
         commands.put("changeCathedra", new ChangeCathedraCommand());
+        commands.put("deleteCathedra", new DeleteCathedraCommand());
+        commands.put("createCathedra", new CreateCathedraCommand());
 
         // link commands
         commands.put("settings", new LinkPageCommand(Path.SETTINGS_CLIENT));

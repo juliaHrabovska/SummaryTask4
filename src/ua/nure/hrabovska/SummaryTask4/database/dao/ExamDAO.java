@@ -36,8 +36,39 @@ public class ExamDAO {
     private static final String GET_EXAM_BY_ID = "SELECT e.name AS exam, e.id AS id " +
             "FROM exam AS e WHERE id=?";
 
+    private static final String GET_ALL_EXAM = "SELECT e.name AS exam, e.id AS id FROM exam AS e";
+
     private Connection connection;
 
+    /**
+     * Get all exams
+     *
+     * @return List of exams
+     * @throws DBException
+     */
+
+    public List<Exam> getAll() throws DBException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Exam> result = new ArrayList<>();
+        try {
+            connection = DBManager.getConnection();
+            statement = connection.prepareStatement(GET_ALL_EXAM);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                result.add(extract(resultSet));
+            }
+        } catch (SQLException e) {
+            LOG.error(Message.CANNOT_GET_ALL_EXAM, e);
+            throw new DBException(Message.CANNOT_GET_ALL_EXAM, e);
+        } finally {
+            DBManager.closeStatement(statement);
+            DBManager.closeResultSet(resultSet);
+            DBManager.closeConnection(connection);
+        }
+        return result;
+    }
 
     /**
      * Get exam list by id
@@ -106,8 +137,8 @@ public class ExamDAO {
     /**
      * Extract a SubmittedAppBean object from the result set
      *
-     * @param resultSet - result set from a submittedAppBean will be extract
-     * @return submittedAppBean object
+     * @param resultSet - result set from an exam will be extract
+     * @return Exam object
      * @throws SQLException
      */
     private Exam extract(ResultSet resultSet) throws SQLException {

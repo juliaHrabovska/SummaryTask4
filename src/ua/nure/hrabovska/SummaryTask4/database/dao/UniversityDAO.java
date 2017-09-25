@@ -27,7 +27,7 @@ public class UniversityDAO {
     /**
      * Get university by place_id
      *
-     * @param place_id
+     * @param place_id - place_id
      * @return List<Place>
      * @throws DBException
      */
@@ -55,10 +55,10 @@ public class UniversityDAO {
     }
 
     /**
-     * Extracts a Genre object from result set
+     * Extracts a University object from result set
      *
-     * @param resultSet Result set from which genre will be extract
-     * @return Genre object
+     * @param resultSet Result set from which university will be extract
+     * @return University object
      * @throws SQLException
      */
     private University extract(ResultSet resultSet) throws SQLException {

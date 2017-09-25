@@ -3,7 +3,9 @@ package ua.nure.hrabovska.SummaryTask4.web.command.user.admin;
 import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.database.dao.CathedraDAO;
 import ua.nure.hrabovska.SummaryTask4.exception.DBException;
+import ua.nure.hrabovska.SummaryTask4.exception.Message;
 import ua.nure.hrabovska.SummaryTask4.web.Path;
+import ua.nure.hrabovska.SummaryTask4.web.RequestProperty;
 import ua.nure.hrabovska.SummaryTask4.web.command.Command;
 import ua.nure.hrabovska.SummaryTask4.web.command.PageData;
 import ua.nure.hrabovska.SummaryTask4.web.command.filingApplication.ShowUniversityPageCommand;
@@ -22,16 +24,17 @@ public class DeleteCathedraCommand extends Command {
     public PageData execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, DBException, ParseException {
         LOG.debug("Commands starts");
 
-        String[] cathedraIds = request.getParameterValues("cathedra_id");
-        LOG.trace("Set the request parameter: cathedraIds --> " + Arrays.toString(cathedraIds));
+        long cathedraId = Long.parseLong(request.getParameter("cathedraIdDel"));
+        LOG.trace("Set the request parameter: cathedraIdDel --> " + cathedraId);
 
         CathedraDAO cathedraDAO = new CathedraDAO();
 
-        if (cathedraDAO.deleteCathdera(cathedraIds)) {
+        if (cathedraDAO.deleteCathdera(cathedraId)) {
             LOG.debug("Commands finished");
-            return new ShowUniversityPageCommand().execute(request, response);
+            return new PageData("/controller?command=universityPage", false);
         }
         LOG.debug("Command is completed with error");
-        return new ShowUniversityPageCommand().execute(request, response);
+        request.setAttribute(RequestProperty.ERROR, Message.CANNOT_DELETE_CATHEDRA);
+        return new PageData("/controller?command=universityPage", false);
     }
 }
