@@ -8,78 +8,76 @@
 <html>
 <head>
     <title>Settings</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
-<%@ include file="/WEB-INF/jspf/header.jspf" %>
-<%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
-<div class="content">
-    <form action="controller" method="post">
-        <input type="hidden" name="command" value="editProfile"/>
-        <table cellpadding="0" cellspacing="0" class="form-table">
-            <tr>
-                <td>
-                    <strong><fmt:message key="email"/></strong></td>
-                <td><input title="example@mail.com" name="email" type="text" id="Email"
-                           value="${account.getEmail()}"/>
-                </td>
-            </tr>
-            <tr>
-                <td><strong><fmt:message key="password"/></strong></td>
-                <td>
-                    <input name="password" type="password" id="password"
-                           title="Letters of the Latin alphabet and numbers"
-                           style="width:90%" pattern="^[0-9A-za-z]+$" maxlength="30"
-                           required
-                           value="${account.getPassword()}"/>
-                </td>
-            </tr>
-            <tr>
-                <td><strong><fmt:message key="passwordConf"/></strong></td>
-                <td>
-                    <input name="password2" type="password" id="password2"
-                           title="Letters of the Latin alphabet and numbers"
-                           style="width:90%" pattern="^[0-9A-za-z]+$" maxlength="30"
-                           required
-                           value="${account.getPassword()}"/>
-                </td>
-            </tr>
-        </table>
-        <br/>
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
+    <div class="row">
 
-        <p class="blog-title"><a style="text-decoration:none"><fmt:message key="personalInformation"/></a></p>
-        <table cellpadding="0" cellspacing="0" class="form-table">
-            <tr>
-                <td><strong><fmt:message key="firstName"/></strong></td>
-                <td>
-                    <input title="Only letters of Cyrillic and Latin alphabets"
-                           name="first_name" type="text" id="firstName" style="width:90%"
-                           maxlength="30" required
-                           value="${enrollee.getFirst_name()}"/>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:40%"><strong><fmt:message key="lastName"/></strong></td>
-                <td>
-                    <input title="Only letters of Cyrillic and Latin alphabets"
-                           name="last_name" type="text" id="lastName" style="width:90%"
-                           maxlength="30" required
-                           value="${enrollee.getLast_name()}"/>
-                </td>
-            </tr>
-            <tr>
-                <td style="width:40%"><strong><fmt:message key="patronymic"/></strong></td>
-                <td>
-                    <input title="Only letters of Cyrillic and Latin alphabets"
-                           name="patronymic" type="text" id="patronymic" style="width:90%"
-                           maxlength="30" required
-                           value="${enrollee.getPatronymic()}"/>
-                </td>
-            </tr>
-        </table>
-        <input class="buttonLogIn" type="submit" value="<fmt:message key="save"/>"/>
+        <div class="col-sm-10 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-    </form>
+            <form action="controller" method="post">
+                <input type="hidden" name="command" value="editProfile"/>
+                <h1 class="page-header" style="margin-top: 5px;">Account data</h1>
+                <div class="row placeholders">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1"
+                               placeholder="Email" required
+                               value="${account.getEmail()}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1"
+                               placeholder="Password"
+                                required value="${account.getPassword()}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword2">Confirm password</label>
+                        <input name="password2" type="password" class="form-control" id="exampleInputPassword2"
+                               placeholder="Password"
+                                required value="${account.getPassword()}">
+                    </div>
+                </div>
+
+                <h1 class="page-header">Entrance data</h1>
+                <div class="row placeholders">
+                    <div class="form-group">
+                        <label for="exampleInputName">First name</label>
+                        <input name="firstName" type="text" class="form-control" id="exampleInputName"
+                               placeholder="Name"
+                               required
+                               maxlength="30" value="${enrollee.getFirst_name()}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputLastName">Last name</label>
+                        <input name="last_name" type="text" class="form-control" id="exampleInputLastName"
+                               placeholder="Lastname" required
+                               maxlength="30" value="${enrollee.getFirst_name()}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPatronymic">Patronymic</label>
+                        <input name="patronymic" type="text" class="form-control" id="exampleInputPatronymic"
+                               placeholder="Patronymic" required
+                               maxlength="30" value="${enrollee.getPatronymic()}">
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-6 placeholder">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
 </div>
+        <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+        <script src="/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package ua.nure.hrabovska.SummaryTask4.web.command.account;
 import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.database.dao.AccountDAO;
 import ua.nure.hrabovska.SummaryTask4.database.dao.EnrolleeDAO;
+import ua.nure.hrabovska.SummaryTask4.database.dao.ResultDAO;
 import ua.nure.hrabovska.SummaryTask4.database.entity.Account;
 import ua.nure.hrabovska.SummaryTask4.database.entity.Enrollee;
 import ua.nure.hrabovska.SummaryTask4.enums.Role;
@@ -19,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Login command
@@ -78,6 +81,11 @@ public class LoginCommand extends Command {
                     request.setAttribute(RequestProperty.ERROR, Message.BAN_USER);
                     return new PageData(Path.ERROR_PAGE, true);
                 }
+
+                Map<String, Integer> results = new ResultDAO().getListExamResultsByErollee_id(enrollee.getId());
+                LOG.debug("Get results from DB: " + results);
+                request.setAttribute("results", results);
+
                 LOG.debug("Command completed successfully");
                 return new PageData(Path.PERSONAL_AREA_CLIENT, true);
             }

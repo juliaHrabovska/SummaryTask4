@@ -7,14 +7,11 @@
 --%>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/tabs.css"/>
+    <title>Cathedra</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jspf/header.jspf" %>
-<%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
-<div class="content">
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
     <h1>${university.name}</h1>
 
     <%--<p> Sort by--%>
@@ -283,5 +280,8 @@
 
 
 </div>
+
+<%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+
 </body>
 </html>

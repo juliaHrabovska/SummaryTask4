@@ -10,7 +10,7 @@ public class Path {
     public static final String LOGIN_PAGE = "index.jsp";
     public static final String ERROR_PAGE = "/WEB-INF/jsp/error.jsp";
     public static final String REGISTRATION_PAGE = "/WEB-INF/jsp/account/registration/registration.jsp";
-    public static final String UPLOAD_FILE_PAGE = "uploadFile.jsp";
+    public static final String UPLOAD_FILE_PAGE = "/WEB-INF/jsp/account/registration/uploadFile.jsp";
     public static final String PLACE_LIST = "/WEB-INF/jsp/fillingApplication/showPlace.jsp";
     public static final String UNIVERSITY_LIST = "/WEB-INF/jsp/fillingApplication/showUniversity.jsp";
     public static final String UNIVERSITY_PAGE = "/WEB-INF/jsp/fillingApplication/universityPage.jsp";

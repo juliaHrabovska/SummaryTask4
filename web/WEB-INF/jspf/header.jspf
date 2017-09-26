@@ -3,6 +3,12 @@
 <%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
 <fmt:setBundle basename="resources"/>
 <div class="header">
-    <p>Cabinet entrant</p>
-    <p align="right"><c:out value="${account.email}"/></p>
+    <c:choose>
+        <c:when test="${account.getRole_id().getName() == 'admin' }">
+            <h3>Cabinet admin</h3>
+        </c:when>
+        <c:when test="${account.getRole_id().getName() == 'client'}">
+            <h3>Cabinet entrant</h3>
+        </c:when>
+    </c:choose>
 </div>

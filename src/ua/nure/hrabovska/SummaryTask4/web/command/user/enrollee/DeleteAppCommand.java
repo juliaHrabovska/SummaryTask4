@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.database.dao.ApplicationDAO;
 import ua.nure.hrabovska.SummaryTask4.database.entity.Enrollee;
 import ua.nure.hrabovska.SummaryTask4.exception.DBException;
+import ua.nure.hrabovska.SummaryTask4.exception.Message;
+import ua.nure.hrabovska.SummaryTask4.web.RequestProperty;
 import ua.nure.hrabovska.SummaryTask4.web.command.Command;
 import ua.nure.hrabovska.SummaryTask4.web.command.PageData;
 
@@ -35,21 +37,23 @@ public class DeleteAppCommand extends Command {
         String[] cathedraIds = request.getParameterValues("cathedraId");
         LOG.trace("Set the request parameter: cathedraIds --> " + Arrays.toString(cathedraIds));
 
-        ApplicationDAO applicationDAO = new ApplicationDAO();
 
         PageData pd = new SubmittedAppCommand().execute(request, response);
-        Long[] cathedra_id_long = new Long[cathedraIds.length];
-        for (int i = 0; i < cathedraIds.length; i++) {
-            cathedra_id_long[i] = Long.parseLong(cathedraIds[i]);
-        }
+        if (cathedraIds != null) {
+            ApplicationDAO applicationDAO = new ApplicationDAO();
+            Long[] cathedra_id_long = new Long[cathedraIds.length];
+            for (int i = 0; i < cathedraIds.length; i++) {
+                cathedra_id_long[i] = Long.parseLong(cathedraIds[i]);
+            }
 
-        if (applicationDAO.deleteApp(cathedra_id_long, enrollee.getId())) {
-            LOG.trace("All chosen books were deleted");
-            LOG.debug("Commands finished");
-            return pd;
+            if (applicationDAO.deleteApp(cathedra_id_long, enrollee.getId())) {
+                LOG.trace("All chosen books were deleted");
+                LOG.debug("Commands finished");
+                return pd;
+            }
         }
-
-        LOG.debug("Command is completed with error");
+        LOG.debug("Commands finished");
+        request.setAttribute(RequestProperty.ERROR, Message.NOTHING_TO_DELETE);
         return pd;
     }
 }

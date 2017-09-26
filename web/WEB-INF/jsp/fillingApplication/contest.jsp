@@ -9,20 +9,10 @@
 <html>
 <head>
     <title>Contest</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
-<%@ include file="/WEB-INF/jspf/header.jspf" %>
-<c:choose>
-    <c:when test="${account.getRole_id().getName() == 'admin' }">
-        <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
-    </c:when>
-    <c:when test="${account.getRole_id().getName() == 'client'}">
-    <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
-    </c:when>
-</c:choose>
-
-<div class="content">
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
     <table border="1">
         <tr>
             <td>№</td>
@@ -85,7 +75,14 @@
         </c:when>
     </c:choose>
 
-
 </div>
+<c:choose>
+    <c:when test="${account.getRole_id().getName() == 'admin' }">
+        <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
+    </c:when>
+    <c:when test="${account.getRole_id().getName() == 'client'}">
+        <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+    </c:when>
+</c:choose>
 </body>
 </html>

@@ -41,7 +41,12 @@ public class ExamFillingCommand extends Command {
         ResultDAO resultDAO = new ResultDAO();
         resultDAO.insertResult(exRes, (Enrollee) request.getSession().getAttribute("enrollee"));
 
+        Map<String, Integer> results = new ResultDAO().getListExamResultsByErollee_id(
+                ((Enrollee) request.getSession().getAttribute("enrollee")).getId());
+        LOG.debug("Get results from DB: " + results);
+        request.setAttribute("results", results);
         LOG.debug("Command completed successfully");
+
         return new PageData(Path.PERSONAL_AREA_CLIENT, true);
     }
 }

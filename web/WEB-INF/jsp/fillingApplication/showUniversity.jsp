@@ -9,10 +9,25 @@
 <html>
 <head>
     <title>Universities</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
-<%@ include file="/WEB-INF/jspf/header.jspf" %>
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-11 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header" style="margin-top: 5px;">Choose an university:</h1>
+            <table class="table table-hover">
+                <c:forEach var="university" items="${university_list}">
+                    <tr>
+                        <td>
+                            <a href="controller?command=universityPage&university_id=${university.id}">${university.name}</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </div>
+</div>
 <c:choose>
     <c:when test="${account.getRole_id().getName() == 'admin' }">
         <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
@@ -21,10 +36,6 @@
         <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
     </c:when>
 </c:choose>
-<div class="content">
-    <c:forEach var="university" items="${university_list}">
-        <a href="controller?command=universityPage&university_id=${university.id}">${university.name}</a>
-    </c:forEach>
-</div>
+<script src="/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +43,13 @@ public class ResultDAO {
             "   FROM results AS r " +
             "       WHERE r.enrollee_id = ?";
 
+    private static final String GET_EXAM_RESULT_BY_ENROLLEE_ID =
+            "SELECT r.mark AS mark, e.name AS name" +
+                    "   FROM results AS r" +
+                    "       INNER JOIN" +
+                    "       exam AS e" +
+                    "       ON r.exam_id = e.id " +
+                    "       WHERE r.enrollee_id = ?";
     private Connection connection;
 
     /**
@@ -131,6 +139,39 @@ public class ResultDAO {
 
             while (resultSet.next()) {
                 result.add(resultSet.getInt(Field.EXAM_MARK));
+            }
+
+        } catch (SQLException e) {
+            LOG.error(Message.CANNOT_GET_RESULT_BY_ENROLLE_ID, e);
+            throw new DBException(Message.CANNOT_GET_RESULT_BY_ENROLLE_ID, e);
+        } finally {
+            DBManager.closeStatement(statement);
+            DBManager.closeResultSet(resultSet);
+            DBManager.closeConnection(connection);
+        }
+        return result;
+    }
+
+    /**
+     * Get exam results list by enrollee's id
+     *
+     * @param enrollee_id - enrollee's id
+     * @return Map of exam results (exam name, mark)
+     * @throws DBException
+     */
+    public Map<String, Integer> getListExamResultsByErollee_id(long enrollee_id) throws DBException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Map<String, Integer> result = new HashMap<>();
+        try {
+            connection = DBManager.getConnection();
+
+            statement = connection.prepareStatement(GET_EXAM_RESULT_BY_ENROLLEE_ID);
+            statement.setLong(1, enrollee_id);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                result.put(resultSet.getString(Field.NAME), resultSet.getInt(Field.EXAM_MARK));
             }
 
         } catch (SQLException e) {

@@ -9,9 +9,10 @@
 <html>
 <head>
     <title>Exams</title>
-
 </head>
 <body>
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
     <form action="controller" method="post">
         <input type="hidden" name="command" value="showChosenExamList">
         <table border="1">
@@ -30,12 +31,14 @@
                     </td>
                     <td>
                         <input type="checkbox" name="examID"
-                                       value="${exam.id}">
+                               value="${exam.id}">
                     </td>
                 </tr>
             </c:forEach>
         </table>
         <input type="submit" value="Choose"/>
     </form>
+</div>
+<%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
 </body>
 </html>

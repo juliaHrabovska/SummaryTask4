@@ -8,12 +8,9 @@
 <html>
 <head>
     <title>Cathedra info</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
-<body>
-<%@ include file="/WEB-INF/jspf/header.jspf" %>
-<%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
-<div class="content">
+<body><%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
     <h1>${university.name}</h1>
 
     <%--<p> Sort by--%>
@@ -369,6 +366,8 @@
         <input type="hidden" name="command" value="showExamList">
         <input type="submit" value="Add new">
     </form>
+
 </div>
+<%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
 </body>
 </html>

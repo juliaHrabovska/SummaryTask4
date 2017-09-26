@@ -49,4 +49,5 @@ public class Message {
     public static final String NOT_CHOSEN_DEPARTMENT = "error.not.chosen.department";
     public static final String NOT_ENOUGH_EXAMS = "error.not.enough.exams";
     public static final String CANNOT_CREATE_CATHEDRA = "error.cannot.create.cathedra";
+    public static final String NOTHING_TO_DELETE = "error.nothing.to.delete";
 }

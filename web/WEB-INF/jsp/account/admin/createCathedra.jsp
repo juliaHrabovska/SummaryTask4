@@ -11,69 +11,74 @@
     <title>Create cathedra</title>
 </head>
 <body>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="createCathedra">
-    <input type="hidden" name="department_id" value="${department_id}">
+<body>
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<div class="container-fluid">
+    <form action="controller" method="post">
+        <input type="hidden" name="command" value="createCathedra">
+        <input type="hidden" name="department_id" value="${department_id}">
 
-    <p>Name: </p><br>
-    <input name="name">
-    <p>Number of budget places:</p><br>
-    <input type="number" name="budget">
-    <p>Namber of contract places:</p><br>
-    <input type="number" name="contract">
-    <p>Type of training:</p><br>
-    <input type="radio" name="type_of_training" value="1" checked>Full time<Br>
-    <input type="radio" name="type_of_training" value="2">Distance<Br>
-    <p>Level of training:</p><br>
-    <input type="radio" name="level_of_training" value="1" checked>Bachelor<Br>
-    <input type="radio" name="level_of_training" value="2">Master<Br>
+        <p>Name: </p><br>
+        <input name="name">
+        <p>Number of budget places:</p><br>
+        <input type="number" name="budget">
+        <p>Namber of contract places:</p><br>
+        <input type="number" name="contract">
+        <p>Type of training:</p><br>
+        <input type="radio" name="type_of_training" value="1" checked>Full time<Br>
+        <input type="radio" name="type_of_training" value="2">Distance<Br>
+        <p>Level of training:</p><br>
+        <input type="radio" name="level_of_training" value="1" checked>Bachelor<Br>
+        <input type="radio" name="level_of_training" value="2">Master<Br>
 
-    <p>Department:</p>
-    <table border="1">
-        <tr>
-            <th>&#8470;</th>
-            <th>Exam name</th>
-            <th>Check</th>
-        </tr>
-        <c:set var="k" value="0"/>
-        <c:forEach var="department" items="${departments}">
-            <c:set var="k" value="${k+1}"/>
+        <p>Department:</p>
+        <table border="1">
             <tr>
-                <td><c:out value="${k}"/></td>
-                <td>
-                        ${department.getName()}<br>
-                </td>
-                <td>
-                    <input type="radio" name="departmentId"
-                           value="${department.id}">
-                </td>
+                <th>&#8470;</th>
+                <th>Exam name</th>
+                <th>Check</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:set var="k" value="0"/>
+            <c:forEach var="department" items="${departments}">
+                <c:set var="k" value="${k+1}"/>
+                <tr>
+                    <td><c:out value="${k}"/></td>
+                    <td>
+                            ${department.getName()}<br>
+                    </td>
+                    <td>
+                        <input type="radio" name="departmentId"
+                               value="${department.id}">
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
 
-    <p>Exams:</p>
-    <table border="1">
-        <tr>
-            <th>&#8470;</th>
-            <th>Exam name</th>
-            <th>Check</th>
-        </tr>
-        <c:set var="k" value="0"/>
-        <c:forEach var="exam" items="${exam_list}">
-            <c:set var="k" value="${k+1}"/>
+        <p>Exams:</p>
+        <table border="1">
             <tr>
-                <td><c:out value="${k}"/></td>
-                <td>
-                        ${exam.getName()}<br>
-                </td>
-                <td>
-                    <input type="checkbox" name="examID"
-                           value="${exam.id}">
-                </td>
+                <th>&#8470;</th>
+                <th>Exam name</th>
+                <th>Check</th>
             </tr>
-        </c:forEach>
-    </table>
-    <input type="submit" value="Add">
-</form>
+            <c:set var="k" value="0"/>
+            <c:forEach var="exam" items="${exam_list}">
+                <c:set var="k" value="${k+1}"/>
+                <tr>
+                    <td><c:out value="${k}"/></td>
+                    <td>
+                            ${exam.getName()}<br>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="examID"
+                               value="${exam.id}">
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+        <input type="submit" value="Add">
+    </form>
+</div>
+<%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
 </body>
 </html>

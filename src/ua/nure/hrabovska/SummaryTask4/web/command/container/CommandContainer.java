@@ -15,6 +15,7 @@ import ua.nure.hrabovska.SummaryTask4.web.command.link.LinkPageCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.admin.*;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.DeleteAppCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.EditProfileCommand;
+import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.PersonalAreaCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.user.enrollee.SubmittedAppCommand;
 
 import java.util.Map;
@@ -54,6 +55,7 @@ public class CommandContainer {
         commands.put("submitted_applications", new SubmittedAppCommand());
         commands.put("deleteApp", new DeleteAppCommand());
         commands.put("editProfile", new EditProfileCommand());
+        commands.put("personal_area_client", new PersonalAreaCommand());
 
         // admin's commands
         commands.put("showUser", new ShowUsersCommand());
@@ -66,7 +68,6 @@ public class CommandContainer {
 
         // link commands
         commands.put("settings", new LinkPageCommand(Path.SETTINGS_CLIENT));
-        commands.put("personal_area_client", new LinkPageCommand(Path.PERSONAL_AREA_CLIENT));
 
     }
 

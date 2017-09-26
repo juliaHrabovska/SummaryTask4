@@ -8,19 +8,27 @@
 <html>
 <head>
     <title>Authentication</title>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/style.css" rel="stylesheet">
+    <link href="/css/signin.css" rel="stylesheet">
+    <link href="/css/buttons.css" rel="stylesheet">
+
 </head>
 <body>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="login"/>
 
-    <strong><fmt:message key="email"/></strong>
-    <input name="email" type="text" id="login"/>
 
-    <input type="submit" name="login" value="Login"/>
+<div class="container">
 
-    <strong><fmt:message key="password"/></strong>
-    <input name="password" type="password" id="password"/>
-</form>
-<a href="controller?command=getRegistrationPage">Registration</a>
+    <form class="form-signin" role="form" action="controller" method="post">
+        <input type="hidden" name="command" value="login"/>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input name="email" type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input name="password" type="password" class="form-control" placeholder="Password" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a style="text-decoration:none" href="controller?command=getRegistrationPage"><button type="button" class="btn btn-lg btn-default btn-reg btn-block">Registration</button></a>
+    </form>
+
+</div>
 </body>
 </html>
