@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>Personal area</title>
-
 </head>
 <body>
 <%@ include file="/WEB-INF/jspf/navbar.jspf" %>

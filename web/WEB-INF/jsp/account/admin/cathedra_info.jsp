@@ -9,365 +9,321 @@
 <head>
     <title>Cathedra info</title>
 </head>
-<body><%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<body>
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
+<%@ include file="/WEB-INF/jspf/navbar.jspf" %>
 <div class="container-fluid">
-    <h1>${university.name}</h1>
+    <div class="row">
 
-    <%--<p> Sort by--%>
-    <%--<table>--%>
-    <%--<tr>--%>
-    <%--<td>--%>
-    <%--<select>--%>
-    <%--<option disabled>Name of department</option>--%>
-    <%--<option><a href="controller?command=sort&typeOfSorting=NI">A-Z</a></option>--%>
-    <%--<option><a href="controller?command=sort&typeOfSorting=ND">Z-A</a></option>--%>
-    <%--</select>--%>
-    <%--</td>--%>
-    <%--<td>--%>
-    <%--<p>Number of budget places</p>--%>
-    <%--<br>--%>
-    <%--<select>--%>
-    <%--<option disabled>Number of budget places</option>--%>
-    <%--<option><a href="controller?command=sort&typeOfSorting=BI">From largest to smallest</a></option>--%>
-    <%--<option><a href="controller?command=sort&typeOfSorting=BD">From smallest to largest</a></option>--%>
-    <%--</select>--%>
-    <%--</td>--%>
-    <%--<td>--%>
-    <%--<select>--%>
-    <%--<option disabled>Licensed volume</option>--%>
-    <%--<a href="controller?command=sort&typeOfSorting=LI">--%>
-    <%--<option>From largest to smallest</option>--%>
-    <%--</a>--%>
-    <%--<option><a href="controller?command=sort&typeOfSorting=LD">From smallest to largest</a></option>--%>
-    <%--</select>--%>
-    <%--</td>--%>
-    <%--</tr>--%>
-    <%--</table>--%>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header" style="margin-top: 5px;">Cathedras</h1>
 
+            <%--<p> Sort by--%>
+            <%--<table>--%>
+            <%--<tr>--%>
+            <%--<td>--%>
+            <%--<select>--%>
+            <%--<option disabled>Name of department</option>--%>
+            <%--<option><a href="controller?command=sort&typeOfSorting=NI">A-Z</a></option>--%>
+            <%--<option><a href="controller?command=sort&typeOfSorting=ND">Z-A</a></option>--%>
+            <%--</select>--%>
+            <%--</td>--%>
+            <%--<td>--%>
+            <%--<p>Number of budget places</p>--%>
+            <%--<br>--%>
+            <%--<select>--%>
+            <%--<option disabled>Number of budget places</option>--%>
+            <%--<option><a href="controller?command=sort&typeOfSorting=BI">From largest to smallest</a></option>--%>
+            <%--<option><a href="controller?command=sort&typeOfSorting=BD">From smallest to largest</a></option>--%>
+            <%--</select>--%>
+            <%--</td>--%>
+            <%--<td>--%>
+            <%--<select>--%>
+            <%--<option disabled>Licensed volume</option>--%>
+            <%--<a href="controller?command=sort&typeOfSorting=LI">--%>
+            <%--<option>From largest to smallest</option>--%>
+            <%--</a>--%>
+            <%--<option><a href="controller?command=sort&typeOfSorting=LD">From smallest to largest</a></option>--%>
+            <%--</select>--%>
+            <%--</td>--%>
+            <%--</tr>--%>
+            <%--</table>--%>
 
-    <!-- Сами вкладки -->
-    <ul class="pixel-tabs" id="type-of-training">
-        <li><a href="#content-fullTime" id="fullTime">Full time</a></li>
-        <li><a href="#content-distance" id="distance">Distance</a></li>
-    </ul>
-
-    <!-- Содержание -->
-    <div class="content-region" id="content-type-of-training">
-
-        <!-- Первая вкладка -->
-        <div id="content-fullTime">
-
-            <ul class="pixel-tabs" id="fullTime-input">
-                <li><a href="#content-fullTime-bachelor" id="bachelor1">Bachelor</a></li>
-                <li><a href="#content-fullTime-master" id="master">Master</a></li>
-            </ul>
-
-            <!-- Содержание -->
-            <div class="content-region" id="content-fullTime-input">
-
-                <!-- Первая вкладка -->
-                <div id="content-fullTime-bachelor">
-                    <table border="1">
-                        <tr>
-                            <th>Speciality</th>
-                            <th>Contest</th>
-                            <th>Volume</th>
-                            <th>Requirements</th>
-                            <th>Change info</th>
-                            <th>Delete</th>
-                        </tr>
-                        <c:forEach var="cathedra" items="${cathedra_list}">
-                            <c:choose>
-                                <c:when test="${cathedra.getLevel_of_training() == 'bachelor' and cathedra.getType_of_training() == 'full time'}">"
-                                    <form action="controller" method="post">
-                                        <input type="hidden" name="command" value="changeCathedra">
-                                        <input type="hidden" name="cathedra_id" value="${cathedra.getId()}">
-
+            <div class="tabs">
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active"><a href="#content-fullTime" data-toggle="tab">Full time</a></li>
+                    <li><a href="#content-distance" data-toggle="tab">Distance</a></li>
+                </ul>
+                <div class="tab-content"
+                     style="border-bottom-color: #0f0f0f; border-left-color: #0f0f0f; border-right-color: #0f0f0f;">
+                    <div class="tab-pane active" id="content-fullTime">
+                        <div class="tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="active program-memory"><a href="#content-fullTime-bachelor"
+                                                                     data-toggle="tab">Bachelor</a></li>
+                                <li class="output-information"><a href="#content-fullTime-master" data-toggle="tab">Master</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="content-fullTime-bachelor">
+                                    <table class="table table-bordered table-hover">
                                         <tr>
-                                            <td>
-                                                    ${cathedra.level_of_training}<br>
-                                                    ${cathedra.department_name}<br>
-                                                <label>
-                                                    <input
-                                                            name="cathedra_name"
-                                                            value="${cathedra.name}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getStatement()}<br>
-                                                    ${cathedra.getRecommended()}<br>
-                                                    ${cathedra.getEnlisted()}<br>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getLicensed_volume()}<br>
-                                                <label>
-                                                    <input
-                                                            name="budget"
-                                                            value="${cathedra.getLicensed_volume_budget()}"/>
-                                                </label>
-                                                <label>
-                                                    <input
-                                                            name="contract"
-                                                            value="${cathedra.getLicensed_volume_contract()}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-
-                                                <c:forEach var="requirement" items="${cathedra.getRequirements()}">
-                                                    ${requirement}<br>
-                                                </c:forEach>
-                                                <p>Certificate score</p>
-                                            </td>
-                                            <td>
-                                                <input type="submit" value="Change">
-                                            </td>
-                                            <td>
-                                                <p>
-                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
-                                            </td>
+                                            <th>Speciality</th>
+                                            <th>Contest</th>
+                                            <th>Volume</th>
+                                            <th>Requirements</th>
+                                            <th>Change info</th>
+                                            <th>Delete</th>
                                         </tr>
-                                    </form>
-                                </c:when>
-                            </c:choose>
-                        </c:forEach>
-                    </table>
-                    <br>
+                                        <c:forEach var="cathedra" items="${cathedra_list}">
+                                            <c:choose>
+                                                <c:when test="${cathedra.getLevel_of_training() == 'bachelor' and cathedra.getType_of_training() == 'full time'}">
+                                                    <form action="controller" method="post">
+                                                        <input type="hidden" name="command" value="changeCathedra">
+                                                        <input type="hidden" name="cathedra_id"
+                                                               value="${cathedra.getId()}">
+                                                        <tr>
+                                                            <td>
+                                                                    ${cathedra.level_of_training}<br>
+                                                                <p>Department: ${cathedra.department_name}</p>
+                                                                <label>
+                                                                    <input
+                                                                            name="cathedra_name"
+                                                                            value="${cathedra.name}"/>
+                                                                </label>
+                                                            </td>
+                                                            <td>
+                                                                <p>Number of
+                                                                    applications: ${cathedra.getStatement()}</p>
+                                                                <p>Number of
+                                                                    recommended: ${cathedra.getRecommended()}</p>
+                                                                <p>Number of enlisted: ${cathedra.getEnlisted()}</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Licensed volume: ${cathedra.getLicensed_volume()}</p>
+                                                                <label>Budget:
+                                                                    <input
+                                                                            name="budget"
+                                                                            value="${cathedra.getLicensed_volume_budget()}"/>
+                                                                </label>
+                                                                <label>Contract:
+                                                                    <input
+                                                                            name="contract"
+                                                                            value="${cathedra.getLicensed_volume_contract()}"/>
+                                                                </label>
 
-                </div>
+                                                            </td>
+                                                            <td>
 
-                <!-- Вторая вкладка -->
-                <div id="content-fullTime-master">
-                    <table border="1">
-                        <tr>
-                            <th>Speciality</th>
-                            <th>Contest</th>
-                            <th>Volume</th>
-                            <th>Requirements</th>
-                            <th>Change info</th>
-                            <th>Delete</th>
-                        </tr>
-                        <c:forEach var="cathedra" items="${cathedra_list}">
-                            <c:choose>
-                                <c:when test="${cathedra.getLevel_of_training() == 'master' and cathedra.getType_of_training() == 'full time'}">
-                                    <form action="controller" method="post">
-                                        <input type="hidden" name="command" value="changeCathedra">
-                                        <input type="hidden" name="cathedra_id" value="${cathedra.getId()}">
+                                                                <c:forEach var="requirement"
+                                                                           items="${cathedra.getRequirements()}">
+                                                                    ${requirement}<br>
+                                                                </c:forEach>
+                                                                <p>Certificate score</p>
+                                                            </td>
+                                                            <td>
 
+                                                                <c:forEach var="requirement" items="${cathedra.getRequirements()}">
+                                                                    ${requirement}<br>
+                                                                </c:forEach>
+                                                                <p>Certificate score</p>
+                                                            </td>
+                                                            <td>
+                                                                <input type="submit" value="Change">
+                                                            </td>
+                                                            <td>
+                                                                <p>
+                                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                    </form>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </table>
+                                </div>
+
+                                <div class="tab-pane" id="content-fullTime-master">
+                                    <table class="table table-bordered table-hover">
                                         <tr>
-                                            <td>
-                                                    ${cathedra.level_of_training}<br>
-                                                    ${cathedra.department_name}<br>
-                                                <label>
-                                                    <input
-                                                            name="cathedra_name"
-                                                            value="${cathedra.name}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getStatement()}<br>
-                                                    ${cathedra.getRecommended()}<br>
-                                                    ${cathedra.getEnlisted()}<br>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getLicensed_volume()}<br>
-                                                <label>
-                                                    <input
-                                                            name="budget"
-                                                            value="${cathedra.getLicensed_volume_budget()}"/>
-                                                </label>
-                                                <label>
-                                                    <input
-                                                            name="contract"
-                                                            value="${cathedra.getLicensed_volume_contract()}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-
-                                                <c:forEach var="requirement" items="${cathedra.getRequirements()}">
-                                                    ${requirement}<br>
-                                                </c:forEach>
-                                                <p>Certificate score</p>
-                                            </td>
-                                            <td>
-                                                <input type="submit" value="Change">
-                                            </td>
-                                            <td>
-                                                <p>
-                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
-                                            </td>
+                                            <th>Speciality</th>
+                                            <th>Contest</th>
+                                            <th>Volume</th>
+                                            <th>Requirements</th>
+                                            <th>Change info</th>
+                                            <th>Delete</th>
                                         </tr>
-                                    </form>
-                                </c:when>
-                            </c:choose>
-                        </c:forEach>
-                    </table>
-                    <br>
+                                        <c:forEach var="cathedra" items="${cathedra_list}">
+                                            <c:choose>
+                                                <c:when test="${cathedra.getLevel_of_training() == 'master' and cathedra.getType_of_training() == 'full time'}">
+                                                    <tr>
+                                                        <td>
+                                                                ${cathedra.level_of_training}<br>
+                                                            <p>Department: ${cathedra.department_name}</p>
+                                                            <p>Cathedra: ${cathedra.name}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p>Number of applications: ${cathedra.getStatement()}</p>
+                                                            <p>Number of recommended: ${cathedra.getRecommended()}</p>
+                                                            <p>Number of enlested: ${cathedra.getEnlisted()}</p>
+                                                            <form action="controller" method="post">
+                                                                <input type="hidden" name="command"
+                                                                       value="changeCathedra">
+                                                                <input type="hidden" name="cathedra_id"
+                                                                       value="${cathedra.getId()}">
+                                                                <button class="btn btn-lg btn-primary btn-block"
+                                                                        type="submit">Contest
+                                                                </button>
+                                                            </form>
+
+                                                        </td>
+                                                        <td>
+                                                            <p>Licensed volume: ${cathedra.getLicensed_volume()}</p>
+                                                            <p>Budget: ${cathedra.getLicensed_volume_budget()}</p>
+                                                            <p>Contract: ${cathedra.getLicensed_volume_contract()}</p>
+                                                        </td>
+                                                        <td>
+                                                            <c:forEach var="requirement"
+                                                                       items="${cathedra.getRequirements()}">
+                                                                ${requirement}<br>
+                                                            </c:forEach>
+                                                            <p>Certificate score</p>
+                                                        </td>
+                                                    </tr>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="content-distance">
+                        <div class="tabs">
+                            <ul class="nav nav-tabs">
+                                <li class="active program-memory"><a href="#content-distance-bachelor"
+                                                                     data-toggle="tab">Bachelor</a></li>
+                                <li class="output-information"><a href="#content-distance-master" data-toggle="tab">Master</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="content-distance-bachelor">
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>Speciality</th>
+                                            <th>Contest</th>
+                                            <th>Volume</th>
+                                            <th>Requirements</th>
+                                            <th>Change info</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        <c:forEach var="cathedra" items="${cathedra_list}">
+                                            <c:choose>
+                                                <c:when test="${cathedra.getLevel_of_training() == 'bachelor' and cathedra.getType_of_training() == 'distance'}">
+                                                    <tr>
+                                                        <td>
+                                                                ${cathedra.level_of_training}<br>
+                                                            <p>Department: ${cathedra.department_name}</p>
+                                                            <p>Cathedra: ${cathedra.name}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p>Number of applications: ${cathedra.getStatement()}</p>
+                                                            <p>Number of recommended: ${cathedra.getRecommended()}</p>
+                                                            <p>Number of enlested: ${cathedra.getEnlisted()}</p>
+                                                            <form action="controller" method="post">
+                                                                <input type="hidden" name="command"
+                                                                       value="changeCathedra">
+                                                                <input type="hidden" name="cathedra_id"
+                                                                       value="${cathedra.getId()}">
+                                                                <button class="btn btn-lg btn-primary btn-block"
+                                                                        type="submit">Contest
+                                                                </button>
+                                                            </form>
+
+                                                        </td>
+                                                        <td>
+                                                            <p>Licensed volume: ${cathedra.getLicensed_volume()}</p>
+                                                            <p>Budget: ${cathedra.getLicensed_volume_budget()}</p>
+                                                            <p>Contract: ${cathedra.getLicensed_volume_contract()}</p>
+                                                        </td>
+                                                        <td>
+                                                            <c:forEach var="requirement"
+                                                                       items="${cathedra.getRequirements()}">
+                                                                ${requirement}<br>
+                                                            </c:forEach>
+                                                            <p>Certificate score</p>
+                                                        </td>
+                                                    </tr>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="content-distance-master">
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <th>Speciality</th>
+                                            <th>Contest</th>
+                                            <th>Volume</th>
+                                            <th>Requirements</th>
+                                            <th>Change info</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        <c:forEach var="cathedra" items="${cathedra_list}">
+                                            <c:choose>
+                                                <c:when test="${cathedra.getLevel_of_training() == 'master' and cathedra.getType_of_training() == 'distance'}">
+                                                    <tr>
+                                                        <td>
+                                                                ${cathedra.level_of_training}<br>
+                                                            <p>Department: ${cathedra.department_name}</p>
+                                                            <p>Cathedra: ${cathedra.name}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p>Number of applications: ${cathedra.getStatement()}</p>
+                                                            <p>Number of recommended: ${cathedra.getRecommended()}</p>
+                                                            <p>Number of enlested: ${cathedra.getEnlisted()}</p>
+                                                            <form action="controller" method="post">
+                                                                <input type="hidden" name="command"
+                                                                       value="changeCathedra">
+                                                                <input type="hidden" name="cathedra_id"
+                                                                       value="${cathedra.getId()}">
+                                                                <button class="btn btn-lg btn-primary btn-block"
+                                                                        type="submit">Contest
+                                                                </button>
+                                                            </form>
+
+                                                        </td>
+                                                        <td>
+                                                            <p>Licensed volume: ${cathedra.getLicensed_volume()}</p>
+                                                            <p>Budget: ${cathedra.getLicensed_volume_budget()}</p>
+                                                            <p>Contract: ${cathedra.getLicensed_volume_contract()}</p>
+                                                        </td>
+                                                        <td>
+                                                            <c:forEach var="requirement"
+                                                                       items="${cathedra.getRequirements()}">
+                                                                ${requirement}<br>
+                                                            </c:forEach>
+                                                            <p>Certificate score</p>
+                                                        </td>
+                                                    </tr>
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
-
-            </div> <!-- #content-region -->
-
+            </div>
         </div>
-
-        <!-- Вторая вкладка -->
-        <div id="content-distance">
-
-
-            <ul class="pixel-tabs" id="distance-input">
-                <li><a href="#content-distance-bachelor" id="bachelor2">Bachelor</a></li>
-                <li><a href="#content-distance-master" id="master2">Master</a></li>
-            </ul>
-
-            <!-- Содержание -->
-            <div class="content-region" id="content-distance-input">
-
-                <!-- Первая вкладка -->
-                <div id="content-distance-bachelor">
-                    <table border="1">
-                        <tr>
-                            <th>Speciality</th>
-                            <th>Contest</th>
-                            <th>Volume</th>
-                            <th>Requirements</th>
-                            <th>Change info</th>
-                            <th>Delete</th>
-                        </tr>
-                        <c:forEach var="cathedra" items="${cathedra_list}">
-                            <c:choose>
-                                <c:when test="${cathedra.getLevel_of_training() == 'bachelor' and cathedra.getType_of_training() == 'distance'}">
-                                    <form action="controller" method="post">
-                                        <input type="hidden" name="command" value="changeCathedra">
-                                        <input type="hidden" name="cathedra_id" value="${cathedra.getId()}">
-
-                                        <tr>
-                                            <td>
-                                                    ${cathedra.level_of_training}<br>
-                                                    ${cathedra.department_name}<br>
-                                                <label>
-                                                    <input
-                                                            name="cathedra_name"
-                                                            value="${cathedra.name}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getStatement()}<br>
-                                                    ${cathedra.getRecommended()}<br>
-                                                    ${cathedra.getEnlisted()}<br>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getLicensed_volume()}<br>
-                                                <label>
-                                                    <input
-                                                            name="budget"
-                                                            value="${cathedra.getLicensed_volume_budget()}"/>
-                                                </label>
-                                                <label>
-                                                    <input
-                                                            name="contract"
-                                                            value="${cathedra.getLicensed_volume_contract()}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-
-                                                <c:forEach var="requirement" items="${cathedra.getRequirements()}">
-                                                    ${requirement}<br>
-                                                </c:forEach>
-                                                <p>Certificate score</p>
-                                            </td>
-                                            <td>
-                                                <input type="submit" value="Change">
-                                            </td>
-                                            <td>
-                                                <p>
-                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
-                                            </td>
-                                        </tr>
-                                    </form>
-                                </c:when>
-                            </c:choose>
-                        </c:forEach>
-                    </table>
-                    <br>
-                </div>
-
-                <!-- Вторая вкладка -->
-                <div id="content-distance-master">
-                    <table border="1">
-                        <tr>
-                            <th>Speciality</th>
-                            <th>Contest</th>
-                            <th>Volume</th>
-                            <th>Requirements</th>
-                            <th>Change info</th>
-                            <th>Delete</th>
-                        </tr>
-                        <c:forEach var="cathedra" items="${cathedra_list}">
-                            <c:choose>
-                                <c:when test="${cathedra.getLevel_of_training() == 'master' and cathedra.getType_of_training() == 'distance'}">
-                                    <form action="controller" method="post">
-                                        <input type="hidden" name="command" value="changeCathedra">
-                                        <input type="hidden" name="cathedra_id" value="${cathedra.getId()}">
-
-                                        <tr>
-                                            <td>
-                                                    ${cathedra.level_of_training}<br>
-                                                    ${cathedra.department_name}<br>
-                                                <label>
-                                                    <input
-                                                            name="cathedra_name"
-                                                            value="${cathedra.name}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getStatement()}<br>
-                                                    ${cathedra.getRecommended()}<br>
-                                                    ${cathedra.getEnlisted()}<br>
-                                            </td>
-                                            <td>
-                                                    ${cathedra.getLicensed_volume()}<br>
-                                                <label>
-                                                    <input
-                                                            name="budget"
-                                                            value="${cathedra.getLicensed_volume_budget()}"/>
-                                                </label>
-                                                <label>
-                                                    <input
-                                                            name="contract"
-                                                            value="${cathedra.getLicensed_volume_contract()}"/>
-                                                </label>
-                                            </td>
-                                            <td>
-
-                                                <c:forEach var="requirement" items="${cathedra.getRequirements()}">
-                                                    ${requirement}<br>
-                                                </c:forEach>
-                                                <p>Certificate score</p>
-                                            </td>
-                                            <td>
-                                                <input type="submit" value="Change">
-                                            </td>
-                                            <td>
-                                                <p>
-                                                    <a href="controller?command=deleteCathedra&cathedraIdDel=${cathedra.getId()}">Delete</a>
-                                            </td>
-                                        </tr>
-                                    </form>
-                                </c:when>
-                            </c:choose>
-                        </c:forEach>
-                    </table>
-                    <br>
-                </div>
-
-            </div> <!-- #content-region -->
-        </div>
-
-    </div> <!-- #content-region -->
-    <form action="controller" method="post">
-        <input type="hidden" name="command" value="showExamList">
-        <input type="submit" value="Add new">
-    </form>
-
+    </div>
 </div>
+
+<%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
 <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
 </body>
 </html>

@@ -13,7 +13,13 @@
 <body>
 <%@ include file="/WEB-INF/jspf/navbar.jspf" %>
 <div class="container-fluid">
-    <table border="1">
+    <div class="row">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header" style="margin-top: 5px;">Contest</h1>
+            <form action="controller" method="get">
+                <input type="hidden" name="command" value="deleteApp"/>
+                <table class="table table-bordered table-hover">
         <tr>
             <td>№</td>
             <td>Full name of enrolle</td>
@@ -70,7 +76,7 @@
             <form action="controller" method="post">
                 <input type="hidden" name="command" value="apply">
                 <input type="hidden" name="cathedra_id" value="${cathedra_id}">
-                <input type="submit" value="Apply">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Apply</button>
             </form>
         </c:when>
     </c:choose>
