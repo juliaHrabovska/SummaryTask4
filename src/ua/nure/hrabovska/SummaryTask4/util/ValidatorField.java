@@ -27,7 +27,7 @@ public class ValidatorField {
     }
 
     public static boolean isCertificate_ScoreValid(int certificate_score) {
-        return certificate_score > 100 && certificate_score < 200;
+        return certificate_score >= 100 && certificate_score <= 200;
     }
 
 

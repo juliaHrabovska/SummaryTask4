@@ -32,6 +32,8 @@ public class FileUploadCommand extends HttpServlet {
 
     private static final String UPLOAD_DIRECTORY = "D:/Учеба/PracticeEpam/SummaryTasks/SummaryTask4_1/SummaryTask4/web/images";
 
+    private static final String ABSOLUTE_PATH = "images\\";
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         LOG.debug("Command start");
@@ -47,7 +49,7 @@ public class FileUploadCommand extends HttpServlet {
                         String file_name = item.getName();
                         LOG.debug("File name: " + file_name);
 
-                        if (file_name.endsWith(".jpg") || file_name.endsWith(".bmp") || file_name.endsWith(".gif") || file_name.endsWith(".png")) {
+                        if (file_name.endsWith(".jpg") || file_name.endsWith(".bmp") || file_name.endsWith(".gif")) {
                             String type = file_name.substring(file_name.lastIndexOf('.'));
                             HttpSession session = request.getSession();
                             Enrollee enrollee = (Enrollee) session.getAttribute("enrollee");
@@ -61,7 +63,7 @@ public class FileUploadCommand extends HttpServlet {
                             item.write(new File(UPLOAD_DIRECTORY + File.separator + file_name));
 
                             EnrolleeDAO enrolleeDAO = new EnrolleeDAO();
-                            if (enrolleeDAO.insertCertificatePath(UPLOAD_DIRECTORY + File.separator + file_name, enrollee.getId())) {
+                            if (enrolleeDAO.insertCertificatePath((ABSOLUTE_PATH + file_name), enrollee.getId())) {
 
                                 enrollee = enrolleeDAO.getById(enrollee.getId());
                                 session.setAttribute("enrollee", enrollee);
