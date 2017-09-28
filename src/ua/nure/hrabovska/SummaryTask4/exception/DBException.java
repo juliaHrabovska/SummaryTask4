@@ -9,7 +9,7 @@ public class DBException extends AppException {
 
     private static final long serialVersionUID = 8486886523003078504L;
 
-    public DBException(){
+    public DBException() {
         super();
     }
 

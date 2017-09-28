@@ -8,6 +8,7 @@
     <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/DepartmentDAO.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/EnrolleeDAO.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/ExamDAO.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/PlaceDAO.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/ResultDAO.java" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/ua/nure/hrabovska/SummaryTask4/database/dao/UniversityDAO.java" dialect="MySQL" />
   </component>

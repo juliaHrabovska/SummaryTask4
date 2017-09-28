@@ -3,6 +3,7 @@ package ua.nure.hrabovska.SummaryTask4.web.command.container;
 import org.apache.log4j.Logger;
 import ua.nure.hrabovska.SummaryTask4.web.Path;
 import ua.nure.hrabovska.SummaryTask4.web.command.Command;
+import ua.nure.hrabovska.SummaryTask4.web.command.account.ChangeLocaleCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.account.ShowDepartments_ExamListCommand;
 import ua.nure.hrabovska.SummaryTask4.web.command.account.registration.ExamFillingCommand;
 
@@ -36,6 +37,7 @@ public class CommandContainer {
         // account commands
         commands.put("login", new LoginCommand());
         commands.put("logout", new LogoutCommand());
+        commands.put("changeLanguage", new ChangeLocaleCommand());
 
         // registration commands
         commands.put("registration", new RegistrationCommand());
@@ -50,6 +52,7 @@ public class CommandContainer {
         commands.put("universityPage", new ShowUniversityPageCommand());
         commands.put("contest", new ContestCommand());
         commands.put("apply", new ApplyCommand());
+        commands.put("sort", new SortCommand());
 
         // enrollee's commands
         commands.put("submitted_applications", new SubmittedAppCommand());

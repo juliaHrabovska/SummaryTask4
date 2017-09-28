@@ -24,7 +24,7 @@ public abstract class Command implements Serializable {
      * @return Address to go once the command is executed.
      */
     public abstract PageData execute(HttpServletRequest request,
-                                     HttpServletResponse response) throws IOException, ServletException,/* DBException, */ParseException, DBException;
+                                     HttpServletResponse response) throws IOException, ServletException, ParseException, DBException;
 
     @Override
     public final String toString() {

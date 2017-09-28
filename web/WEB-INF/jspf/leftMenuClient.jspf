@@ -1,8 +1,8 @@
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
-        <li><a href="controller?command=personal_area_client">Entrance data</a></li>
-        <li><a href="controller?command=showPlace">Filing applications</a></li>
-        <li><a href="controller?command=submitted_applications">Submitted applications</a></li>
-        <li><a href="controller?command=settings">Settings</a></li>
+        <li><a href="controller?command=personal_area_client"><fmt:message key="data"/></a></li>
+        <li><a href="controller?command=showPlace"><fmt:message key="filling"/></a></li>
+        <li><a href="controller?command=submitted_applications"><fmt:message key="submitted"/></a></li>
+        <li><a href="controller?command=settings"><fmt:message key="settings"/></a></li>
     </ul>
 </div>

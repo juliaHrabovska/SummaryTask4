@@ -26,7 +26,6 @@ import java.util.List;
  * Show departments, exams command
  *
  * @author Y. Hrabovska
- *
  */
 public class ShowDepartments_ExamListCommand extends Command {
 
@@ -43,7 +42,7 @@ public class ShowDepartments_ExamListCommand extends Command {
         if (account.getRole_id() == Role.ADMIN) {
             DepartmentDAO departmentDAO = new DepartmentDAO();
             List<Department> departmentList = departmentDAO.getAllDepartments(
-                    (long)request.getSession().getAttribute("university_id"));
+                    (long) request.getSession().getAttribute("university_id"));
 
             request.setAttribute(RequestProperty.DEPARTMENTS, departmentList);
             LOG.trace("Set the request attribute: departmentList --> " + departmentList);

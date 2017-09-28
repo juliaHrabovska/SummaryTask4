@@ -17,6 +17,13 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header" style="margin-top: 5px;">Users</h1>
+            <c:if test="${not empty error}">
+                <div class="warningbox">
+                    <div class="innerbox">
+                        <p><c:out value="${error}"/>
+                    </div>
+                </div>
+            </c:if>
             <table class="table table-bordered table-hover">
                 <tr>
                     <th>&#8470;</th>
@@ -44,9 +51,9 @@
                                 ${enrollee.getLevel()}<br>
                         </td>
                         <td>
-                            <a href="${enrollee.getCertificate_path()}">
+                            <a href="/images/1.jpg">
                                 <img style="width:50px;height:50px;"
-                                     src="${enrollee.getCertificate_path()}"/>
+                                     src="/images/1.jpg"/>
                             </a>
                         </td>
                         <td>

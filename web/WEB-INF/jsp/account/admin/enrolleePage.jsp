@@ -16,6 +16,13 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header" style="margin-top: 5px;">User info</h1>
+            <c:if test="${not empty error}">
+                <div class="warningbox">
+                    <div class="innerbox">
+                        <p><c:out value="${error}"/>
+                    </div>
+                </div>
+            </c:if>
             <table class="table table-bordered table-hover">
                 <tr>
                     <th>Status</th>

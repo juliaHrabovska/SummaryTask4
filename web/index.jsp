@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -28,6 +29,13 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <a style="text-decoration:none" href="controller?command=getRegistrationPage"><button type="button" class="btn btn-lg btn-default btn-reg btn-block">Registration</button></a>
     </form>
+    <c:if test="${not empty error}">
+        <div class="warningbox">
+            <div class="innerbox">
+                <center><p><c:out value="${error}"/></center>
+            </div>
+        </div>
+    </c:if>
 
 </div>
 </body>

@@ -21,6 +21,7 @@ public class Encryption {
 
         return new String(chars);
     }
+
     /**
      * Decryption of cipher
      *

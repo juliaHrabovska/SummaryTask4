@@ -40,8 +40,8 @@ public class ResultDAO {
 
     private static final String GET_RESULT_BY_ENROLLEE_ID =
             "SELECT r.mark AS mark " +
-            "   FROM results AS r " +
-            "       WHERE r.enrollee_id = ?";
+                    "   FROM results AS r " +
+                    "       WHERE r.enrollee_id = ?";
 
     private static final String GET_EXAM_RESULT_BY_ENROLLEE_ID =
             "SELECT r.mark AS mark, e.name AS name" +

@@ -103,7 +103,7 @@ public class AccountDAO {
     /**
      * Ban user
      *
-     * @param account account_id
+     * @param account  account_id
      * @param isBanned banned_status
      * @return Account object
      * @throws DBException

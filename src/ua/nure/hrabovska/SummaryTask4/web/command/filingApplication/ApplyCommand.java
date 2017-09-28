@@ -39,7 +39,8 @@ public class ApplyCommand extends Command {
         LOG.trace("Get parameter cathedra_id: " + cathedra_id);
 
         ApplicationDAO applicationDAO = new ApplicationDAO();
-        if (applicationDAO.getByEnrolleeCathedraIds(enrollee.getId(), cathedra_id) == null) {
+        int result = applicationDAO.getByEnrolleeId(enrollee.getId(), cathedra_id);
+        if (result != 0) {
             request.setAttribute(RequestProperty.ERROR, Message.APPLICATION_SUBMITTED);
         } else {
             ResultDAO resultDAO = new ResultDAO();
@@ -65,7 +66,8 @@ public class ApplyCommand extends Command {
         }
         LOG.debug("Commands finished with error");
         request.setAttribute(RequestProperty.CATHEDRA_ID, cathedra_id);
-        return new PageData("/controller?command=contest", false);
+        PageData pd = new ContestCommand().execute(request, response);
+        return pd;
 
     }
 

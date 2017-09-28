@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -10,7 +11,6 @@
     <title>Registration</title>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container" style="margin-top: 40px; width: 800px;">
@@ -26,6 +26,13 @@
 
                         <h3 class="page-header" style="margin-top: 5px;">Account data</h3>
                         <div class=" placeholders" style="margin-bottom: 0;">
+                            <c:if test="${not empty error}">
+                                <div class="warningbox">
+                                    <div class="innerbox">
+                                        <p><c:out value="${error}"/>
+                                    </div>
+                                </div>
+                            </c:if>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input name="email" type="email" class="form-control" id="exampleInputEmail1"

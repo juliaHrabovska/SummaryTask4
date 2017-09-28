@@ -30,12 +30,12 @@ public class ChangeCathedraCommand extends Command {
 
         LOG.debug("Command starts");
 
-        String cathedra_name = request.getParameter("cathedra_name");
+        String cathedraName = request.getParameter("cathedraName");
         int budget = Integer.parseInt(request.getParameter("budget"));
         int contract = Integer.parseInt(request.getParameter("contract"));
         long cathedra_id = Long.parseLong(request.getParameter(RequestProperty.CATHEDRA_ID));
 
-        LOG.trace("Request parameter cathedra_name: " + cathedra_name);
+        LOG.trace("Request parameter cathedraName: " + cathedraName);
         LOG.trace("Request parameter budget: " + budget);
         LOG.trace("Request parameter contract: " + contract);
         LOG.trace("Request parameter cathedra_id: " + cathedra_id);
@@ -45,7 +45,7 @@ public class ChangeCathedraCommand extends Command {
         } else {
             CathedraDAO cathedraDAO = new CathedraDAO();
 
-            if (cathedraDAO.changeCathedra(cathedra_name, budget, contract, cathedra_id)) {
+            if (cathedraDAO.changeCathedra(cathedraName, budget, contract, cathedra_id)) {
                 request.setAttribute(RequestProperty.ERROR, Message.All_OK);
 
                 request.setAttribute(RequestProperty.CATHEDRA_ID, cathedra_id);

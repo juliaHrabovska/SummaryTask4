@@ -20,6 +20,82 @@ public class CathedraDAO {
 
     private static final Logger LOG = Logger.getLogger(CathedraDAO.class);
 
+    private static final String GET_CATHEDRA_BEAN_BY_UNIVER_ID_NAME_DESC =
+            "SELECT c.id, c.name, lv.budget AS budget,  " +
+                    "                    lv.contract AS contract,  " +
+                    "                    lt.name AS level_of_training,  " +
+                    "                    d.id AS department_id,  " +
+                    "                    d.name AS department,  " +
+                    "                    tt.name AS type_of_training   " +
+                    "                    FROM cathedra AS c   " +
+                    "                    INNER JOIN licensed_volume AS lv   " +
+                    "                    ON c.licensed_volume_id = lv.id   " +
+                    "                    INNER JOIN level_of_training AS lt   " +
+                    "                    ON c.level_of_training_id = lt.id   " +
+                    "                    INNER JOIN department AS d   " +
+                    "                    ON c.department_id = d.id   " +
+                    "                    INNER JOIN type_of_training AS tt   " +
+                    "                    ON c.type_of_training_id = tt.id   " +
+                    "                    WHERE d.university_id=?  " +
+                    "                    ORDER BY c.name DESC ";
+
+    private static final String GET_CATHEDRA_BEAN_BY_UNIVER_ID_NAME =
+            "SELECT c.id, c.name, lv.budget AS budget, " +
+                    "                    lv.contract AS contract, " +
+                    "                    lt.name AS level_of_training, " +
+                    "                    d.id AS department_id, " +
+                    "                    d.name AS department, " +
+                    "                    tt.name AS type_of_training " +
+                    "                    FROM cathedra AS c " +
+                    "                    INNER JOIN licensed_volume AS lv" +
+                    "                    ON c.licensed_volume_id = lv.id " +
+                    "                    INNER JOIN level_of_training AS lt " +
+                    "                    ON c.level_of_training_id = lt.id " +
+                    "                    INNER JOIN department AS d " +
+                    "                    ON c.department_id = d.id " +
+                    "                    INNER JOIN type_of_training AS tt " +
+                    "                    ON c.type_of_training_id = tt.id " +
+                    "                    WHERE d.university_id=? " +
+                    "                    ORDER BY c.name";
+
+    private static final String GET_CATHEDRA_BEAN_BY_UNIVER_ID_BUDGET_DESC =
+            "SELECT c.id, c.name, lv.budget AS budget,  " +
+                    "                    lv.contract AS contract,  " +
+                    "                    lt.name AS level_of_training,  " +
+                    "                    d.id AS department_id,  " +
+                    "                    d.name AS department,  " +
+                    "                    tt.name AS type_of_training   " +
+                    "                    FROM cathedra AS c   " +
+                    "                    INNER JOIN licensed_volume AS lv   " +
+                    "                    ON c.licensed_volume_id = lv.id   " +
+                    "                    INNER JOIN level_of_training AS lt   " +
+                    "                    ON c.level_of_training_id = lt.id   " +
+                    "                    INNER JOIN department AS d   " +
+                    "                    ON c.department_id = d.id   " +
+                    "                    INNER JOIN type_of_training AS tt   " +
+                    "                    ON c.type_of_training_id = tt.id   " +
+                    "                    WHERE d.university_id= ? " +
+                    "                    ORDER BY lv.budget DESC";
+
+    private static final String GET_CATHEDRA_BEAN_BY_UNIVER_ID_BUDGET =
+            "SELECT c.id, c.name, lv.budget AS budget,  " +
+                    "                    lv.contract AS contract,  " +
+                    "                    lt.name AS level_of_training,  " +
+                    "                    d.id AS department_id,  " +
+                    "                    d.name AS department,  " +
+                    "                    tt.name AS type_of_training   " +
+                    "                    FROM cathedra AS c   " +
+                    "                    INNER JOIN licensed_volume AS lv   " +
+                    "                    ON c.licensed_volume_id = lv.id   " +
+                    "                    INNER JOIN level_of_training AS lt   " +
+                    "                    ON c.level_of_training_id = lt.id   " +
+                    "                    INNER JOIN department AS d   " +
+                    "                    ON c.department_id = d.id   " +
+                    "                    INNER JOIN type_of_training AS tt   " +
+                    "                    ON c.type_of_training_id = tt.id   " +
+                    "                    WHERE d.university_id= ? " +
+                    "                    ORDER BY lv.budget ";
+
     private static final String GET_CATHEDRA_BEAN_BY_UNIVER_ID = "SELECT c.id, c.name, lv.budget AS budget," +
             "lv.contract AS contract," +
             "lt.name AS level_of_training," +
@@ -61,16 +137,106 @@ public class CathedraDAO {
     private static final String GET_LICENSED_VOLUME_ID = "SELECT id FROM licensed_volume WHERE budget = ? AND contract = ?";
 
     private static final String GET_CATHEDRA = "SELECT id FROM cathedra WHERE name = ? AND licensed_volume_id = ? AND type_of_training_id = ? AND level_of_training_id = ? AND department_id = ?";
+
     private static final String CREATE_REQUREMENTS = "INSERT INTO requirements (exam_id, cathedra_id) VALUES (?, ?)";
 
     private Connection connection;
 
-/**
- * Create new cathedra in database
- *
- * @param cathedra_id - id of cathedra to delete
- * @return true if operation complete successful, false - otherwise
- */
+    /**
+     * Get sort CathedraBean list
+     *
+     * @param university_id - university id
+     * @param type          - type of sorting
+     * @param flag          - DESC or not
+     * @return
+     */
+    public List<CathedraBean> getCathedraBeanByUniver_idSort(long university_id, String type, boolean flag) throws DBException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<CathedraBean> cathedraBeanList = new ArrayList<>();
+        try {
+            connection = DBManager.getConnection();
+            switch (type) {
+                case "name":
+                    if (flag) {
+                        statement = connection.prepareStatement(GET_CATHEDRA_BEAN_BY_UNIVER_ID_NAME_DESC);
+                    } else {
+                        statement = connection.prepareStatement(GET_CATHEDRA_BEAN_BY_UNIVER_ID_NAME);
+                    }
+                    break;
+                case "budget":
+                    if (flag) {
+                        statement = connection.prepareStatement(GET_CATHEDRA_BEAN_BY_UNIVER_ID_BUDGET_DESC);
+                    } else {
+                        statement = connection.prepareStatement(GET_CATHEDRA_BEAN_BY_UNIVER_ID_BUDGET);
+                    }
+                    break;
+            }
+
+            statement.setLong(1, university_id);
+            resultSet = statement.executeQuery();
+
+            PreparedStatement preparedStatement = null;
+            ResultSet resultSet1 = null;
+            int i = 0;
+            while (resultSet.next()) {
+
+                cathedraBeanList.add(extractCathedraBean(resultSet));
+
+                List<String> requirements = new ArrayList<>();
+                preparedStatement = connection.prepareStatement(GET_LIST_REQUIREMENTS);
+                preparedStatement.setLong(1, cathedraBeanList.get(i).getId());
+                resultSet1 = preparedStatement.executeQuery();
+                while (resultSet1.next()) {
+                    requirements.add(extractRequirements(resultSet1));
+                }
+                cathedraBeanList.get(i).setRequirements(requirements);
+
+                int contest = 0;
+                preparedStatement = connection.prepareStatement(GET_CONTEST);
+                preparedStatement.setLong(1, cathedraBeanList.get(i).getId());
+                preparedStatement.setInt(2, 1);
+                resultSet1 = preparedStatement.executeQuery();
+                if (resultSet1.next()) {
+                    contest = resultSet1.getInt(Field.CONTEST);
+                }
+                cathedraBeanList.get(i).setStatement(contest);
+
+                preparedStatement.setLong(1, cathedraBeanList.get(i).getId());
+                preparedStatement.setInt(2, 2);
+                resultSet1 = preparedStatement.executeQuery();
+                if (resultSet1.next()) {
+                    contest = resultSet1.getInt(Field.CONTEST);
+                }
+                cathedraBeanList.get(i).setRecommended(contest);
+
+                preparedStatement.setLong(1, cathedraBeanList.get(i).getId());
+                preparedStatement.setInt(2, 3);
+                resultSet1 = preparedStatement.executeQuery();
+                if (resultSet1.next()) {
+                    contest = resultSet1.getInt(Field.CONTEST);
+                }
+                cathedraBeanList.get(i).setEnlisted(contest);
+
+                i++;
+            }
+            DBManager.closeStatement(preparedStatement);
+            DBManager.closeResultSet(resultSet1);
+
+
+        } catch (SQLException ex) {
+            LOG.error(Message.CANNOT_OBTAIN_CATHEDRA_BEANS, ex);
+            throw new DBException(Message.CANNOT_OBTAIN_CATHEDRA_BEANS, ex);
+        } finally {
+            DBManager.closeStatement(statement);
+            DBManager.closeResultSet(resultSet);
+            DBManager.closeConnection(connection);
+        }
+        return cathedraBeanList;
+
+
+    }
+
     /**
      * Create new cathedra in database
      *

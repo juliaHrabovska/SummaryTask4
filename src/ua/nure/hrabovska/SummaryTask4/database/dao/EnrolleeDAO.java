@@ -40,15 +40,15 @@ public class EnrolleeDAO {
 
     private static final String GET_ALL_ENROLLEE =
             "SELECT e.id, e.first_name, e.last_name, e.patronymic,  " +
-            "    lt.name AS level_of_training, e.certificate_score, e.certificate_path,  " +
-            "    a.is_banned " +
-            "    FROM enrollee AS e " +
-            "        INNER JOIN  " +
-            "         account AS a " +
-            "        ON a.id = e.account_id " +
-            "        INNER JOIN " +
-            "         level_of_training AS lt " +
-            "        ON lt.id = e.level_id";
+                    "    lt.name AS level_of_training, e.certificate_score, e.certificate_path,  " +
+                    "    a.is_banned " +
+                    "    FROM enrollee AS e " +
+                    "        INNER JOIN  " +
+                    "         account AS a " +
+                    "        ON a.id = e.account_id " +
+                    "        INNER JOIN " +
+                    "         level_of_training AS lt " +
+                    "        ON lt.id = e.level_id";
 
     private Connection connection;
 

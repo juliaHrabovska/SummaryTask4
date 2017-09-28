@@ -27,7 +27,6 @@ import java.util.Map;
  * Login command
  *
  * @author Y. Hrabovska
- *
  */
 public class LoginCommand extends Command {
 
@@ -67,12 +66,12 @@ public class LoginCommand extends Command {
             session.setAttribute("enrollee", enrollee);
             LOG.trace("Set the session attribute: accountRole --> " + accountRole);
 
-            if (accountRole == Role.ADMIN){
+            if (accountRole == Role.ADMIN) {
                 return new PageData("/controller?command=showUser", false);
             }
 
-            if (accountRole == Role.CLIENT){
-                if (account.is_banned()){
+            if (accountRole == Role.CLIENT) {
+                if (account.is_banned()) {
                     session = request.getSession(false);
                     if (session != null) {
                         session.invalidate();

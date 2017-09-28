@@ -15,7 +15,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-11 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header" style="margin-top: 5px;">Choose an university:</h1>
+            <h1 class="page-header" style="margin-top: 5px;"><fmt:message key="chooseUniversity"/>:</h1>
             <table class="table table-hover">
                 <c:forEach var="university" items="${university_list}">
                     <tr>

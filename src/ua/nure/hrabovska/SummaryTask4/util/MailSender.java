@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
  * Send mail service
  *
  * @author Y. Hrabovska
- *
  */
 public class MailSender {
 
@@ -28,6 +27,7 @@ public class MailSender {
 
     /**
      * Sends mail to the toEmail address
+     *
      * @param toEmail address of user
      * @return true if message was sent, false otherwise
      */

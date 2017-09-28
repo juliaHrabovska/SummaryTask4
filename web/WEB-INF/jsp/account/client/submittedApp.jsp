@@ -15,17 +15,17 @@
     <div class="row">
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header" style="margin-top: 5px;">Submitted applications</h1>
+            <h1 class="page-header" style="margin-top: 5px;"><fmt:message key="submitted"/></h1>
             <form action="controller" method="get">
                 <input type="hidden" name="command" value="deleteApp"/>
                 <table class="table table-bordered table-hover">
                     <tr>
-                        <th>Status</th>
-                        <th>University</th>
-                        <th>Type of training</th>
-                        <th>Department</th>
-                        <th>Cathedra</th>
-                        <th>Delete</th>
+                        <th><fmt:message key="status"/></th>
+                        <th><fmt:message key="univer"/></th>
+                        <th><fmt:message key="typeOfTrain"/></th>
+                        <th><fmt:message key="department"/></th>
+                        <th><fmt:message key="cathedras"/></th>
+                        <th><fmt:message key="delete"/></th>
                     </tr>
                     <c:forEach var="submApp" items="${submitted_app}">
                         <tr>
@@ -53,7 +53,7 @@
                 </table>
                 <div class="col-md-3 col-xs-6 placeholder">
                     <a style="text-decoration:none" href="controller?command=submitted_applications">
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Delete applications</button>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="deleteApp"/></button>
                     </a>
                 </div>
             </form>

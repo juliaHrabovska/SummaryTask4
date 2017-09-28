@@ -24,7 +24,6 @@ import java.util.List;
  * File upload command
  *
  * @author Y. Hrabovska
- *
  */
 public class FileUploadCommand extends HttpServlet {
 
@@ -90,30 +89,4 @@ public class FileUploadCommand extends HttpServlet {
             }
         }
     }
-
-//    public PageData execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ParseException, DBException {
-//
-//        LOG.debug("Command start");
-//
-//        if (ServletFileUpload.isMultipartContent(request)) {
-//            try {
-//                List<FileItem> multiparts = new ServletFileUpload(
-//                        new DiskFileItemFactory()).parseRequest(request);
-//
-//                for (FileItem item : multiparts) {
-//                    if (!item.isFormField()) {
-//                        String name = new File(item.getName()).getName();
-//                        item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
-//                    }
-//                }
-//
-//                LOG.debug("Command completed successfully");
-//                return new PageData(Path.PERSONAL_AREA_CLIENT, true);
-//            } catch (Exception e) {
-//                request.setAttribute(RequestProperty.ERROR, Message.CANNOT_UPLOAD_FILE);
-//            }
-//        }
-//        LOG.debug("Command is completed with error");
-//        return new PageData(Path.UPLOAD_FILE_PAGE, true);
-//    }
 }

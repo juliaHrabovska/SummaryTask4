@@ -16,79 +16,84 @@
     <div class="row">
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h1 class="page-header" style="margin-top: 5px;">Contest</h1>
-            <form action="controller" method="get">
-                <input type="hidden" name="command" value="deleteApp"/>
-                <table class="table table-bordered table-hover">
-        <tr>
-            <td>№</td>
-            <td>Full name of enrolle</td>
-            <td>Status</td>
-            <td>Competitive score</td>
-            <td>Exam results</td>
+            <h1 class="page-header" style="margin-top: 5px;"><fmt:message key="contest"/></h1>
+            <c:if test="${not empty error}">
+                <div class="warningbox">
+                    <div class="innerbox">
+                        <p><c:out value="${error}"/>
+                    </div>
+                </div>
+            </c:if>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>№</td>
+                    <td><fmt:message key="fullNameEnrollee"/></td>
+                    <td><fmt:message key="status"/></td>
+                    <td><fmt:message key="competitiveScore"/></td>
+                    <td><fmt:message key="examRes"/></td>
+                    <c:choose>
+                        <c:when test="${account.getRole_id().getName() == 'admin' }">
+                            <td><fmt:message key="changeStatus"/></td>
+                        </c:when>
+                    </c:choose>
+
+                </tr>
+                <c:set var="k" value="0"/>
+                <c:forEach var="contest" items="${contest}">
+                    <c:set var="k" value="${k+1}"/>
+                    <tr>
+                        <td><c:out value="${k}"/></td>
+                        <td>
+                                ${contest.getEnrollee_first_name()}
+                                ${contest.getEnrollee_last_name()}
+                                ${contest.getEnrollee_patronymic()}
+                        </td>
+                        <td>
+                                ${contest.getStatus()}
+                        </td>
+                        <td>
+                                ${contest.getCompetitive_score()}
+                        </td>
+                        <td>
+                            <c:forEach var="results" items="${contest.getExam_results()}">
+                                ${results.getKey()}:${results.getValue()}<br>
+                            </c:forEach>
+                        </td>
+                        <c:choose>
+                            <c:when test="${account.getRole_id().getName() == 'admin' }">
+                                <td>
+                                    <p>
+                                        <a href="controller?command=changeStatus&enrolleeId=${contest.getEnrolleeId()}&status=1&cathedraId=${cathedra_id}">Registered</a>
+                                    <p>
+                                        <a href="controller?command=changeStatus&enrolleeId=${contest.getEnrolleeId()}&status=2&cathedraId=${cathedra_id}">Recommended</a>
+                                    <p>
+                                        <a href="controller?command=changeStatus&enrolleeId=${contest.getEnrolleeId()}&status=3&cathedraId=${cathedra_id}">Enlisted</a>
+                                </td>
+                            </c:when>
+                        </c:choose>
+                    </tr>
+                </c:forEach>
+
+            </table>
+
             <c:choose>
-                <c:when test="${account.getRole_id().getName() == 'admin' }">
-                    <td>Change status</td>
+                <c:when test="${account.getRole_id().getName() == 'client'}">
+                    <form action="controller" method="post">
+                        <input type="hidden" name="command" value="apply">
+                        <input type="hidden" name="cathedra_id" value="${cathedra_id}">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="apply"/></button>
+                    </form>
                 </c:when>
             </c:choose>
 
-        </tr>
-        <c:set var="k" value="0"/>
-        <c:forEach var="contest" items="${contest}">
-            <c:set var="k" value="${k+1}"/>
-            <tr>
-                <td><c:out value="${k}"/></td>
-                <td>
-                        ${contest.getEnrollee_first_name()}
-                        ${contest.getEnrollee_last_name()}
-                        ${contest.getEnrollee_patronymic()}
-                </td>
-                <td>
-                        ${contest.getStatus()}
-                </td>
-                <td>
-                        ${contest.getCompetitive_score()}
-                </td>
-                <td>
-                    <c:forEach var="results" items="${contest.getExam_results()}">
-                        ${results.getKey()}:${results.getValue()}<br>
-                    </c:forEach>
-                </td>
-                <c:choose>
-                    <c:when test="${account.getRole_id().getName() == 'admin' }">
-                        <td>
-                            <p>
-                                <a href="controller?command=changeStatus&enrolleeId=${contest.getEnrolleeId()}&status=1&cathedraId=${cathedra_id}">Registered</a>
-                            <p>
-                                <a href="controller?command=changeStatus&enrolleeId=${contest.getEnrolleeId()}&status=2&cathedraId=${cathedra_id}">Recommended</a>
-                            <p>
-                                <a href="controller?command=changeStatus&enrolleeId=${contest.getEnrolleeId()}&status=3&cathedraId=${cathedra_id}">Enlisted</a>
-                        </td>
-                    </c:when>
-                </c:choose>
-            </tr>
-        </c:forEach>
-
-    </table>
-
-    <c:choose>
-        <c:when test="${account.getRole_id().getName() == 'client'}">
-            <form action="controller" method="post">
-                <input type="hidden" name="command" value="apply">
-                <input type="hidden" name="cathedra_id" value="${cathedra_id}">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Apply</button>
-            </form>
+        </div>
+        <c:choose>
+        <c:when test="${account.getRole_id().getName() == 'admin' }">
+            <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
         </c:when>
-    </c:choose>
-
-</div>
-<c:choose>
-    <c:when test="${account.getRole_id().getName() == 'admin' }">
-        <%@ include file="/WEB-INF/jspf/leftMenuAdmin.jspf" %>
-    </c:when>
-    <c:when test="${account.getRole_id().getName() == 'client'}">
-        <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
-    </c:when>
-</c:choose>
+        <c:when test="${account.getRole_id().getName() == 'client'}">
+            <%@ include file="/WEB-INF/jspf/leftMenuClient.jspf" %>
+        </c:when>
+        </c:choose>
 </body>
 </html>

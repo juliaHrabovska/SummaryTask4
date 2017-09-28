@@ -2,15 +2,14 @@ package ua.nure.hrabovska.SummaryTask4.web.listener;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import ua.nure.hrabovska.SummaryTask4.enums.Language;
+import ua.nure.hrabovska.SummaryTask4.util.MessageLanguge;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-//import javax.servlet.jsp.jstl.core.Config;
-
-//import ua.nure.hrabovska.SummaryTask4.enums.Language;
-//import ua.nure.hrabovska.SummaryTask4.util.MessageLanguge;
+import javax.servlet.jsp.jstl.core.Config;
 
 /**
  * Context listener
@@ -35,7 +34,7 @@ public class ContextListener implements ServletContextListener {
         initLog4J(servletContext);
         initCommandContainer();
 
-        //setLocale(servletContext);
+        setLocale(servletContext);
         log("Servlet context initialization finished");
     }
 
@@ -59,11 +58,12 @@ public class ContextListener implements ServletContextListener {
         log("Log4J initialization finished");
     }
 
-    /**private void setLocale(ServletContext context) {
+    private void setLocale(ServletContext context) {
         Config.set(context, Config.FMT_LOCALE, Language.ENGLISH.getLocale());
         MessageLanguge.setLocale(Language.ENGLISH.getLocale());
         LOG.debug("Defaul locale has been set");
     }
+
     /**
      * Initializes CommandContainer.
      */

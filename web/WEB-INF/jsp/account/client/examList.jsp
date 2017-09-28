@@ -19,6 +19,13 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Choose exams</h3>
             </div>
+            <c:if test="${not empty error}">
+                <div class="warningbox">
+                    <div class="innerbox">
+                        <p><c:out value="${error}"/>
+                    </div>
+                </div>
+            </c:if>
             <div class="panel-body">
                 <div class="col-sm-11 main">
                     <form action="controller" method="post">

@@ -15,7 +15,6 @@ import org.apache.log4j.Logger;
  * Captcha verify service
  *
  * @author Y. Hrabovska
- *
  */
 public class CaptchaVerify {
 
@@ -66,14 +65,14 @@ public class CaptchaVerify {
         } catch (Exception e) {
             LOG.debug(e.getMessage(), e);
         } finally {
-            if(outStream != null) {
+            if (outStream != null) {
                 try {
                     outStream.close();
                 } catch (IOException e) {
                     LOG.debug(e.getMessage(), e);
                 }
             }
-            if(bufferedReader != null) {
+            if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {

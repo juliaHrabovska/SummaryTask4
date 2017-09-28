@@ -37,7 +37,7 @@ public class ContestCommand extends Command {
 
         LOG.trace("Get applicationBeans from DB: " + applicationBeans);
 
-        for (ApplicationBean application: applicationBeans) {
+        for (ApplicationBean application : applicationBeans) {
             application.setExam_results(applicationDAO.getListResults(application.getEnrollee_id(), cathedra_id));
         }
 

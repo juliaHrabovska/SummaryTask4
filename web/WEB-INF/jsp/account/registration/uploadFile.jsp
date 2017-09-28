@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -18,6 +19,13 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Upload certificate scan</h3>
             </div>
+            <c:if test="${not empty error}">
+                <div class="warningbox">
+                    <div class="innerbox">
+                        <p><c:out value="${error}"/>
+                    </div>
+                </div>
+            </c:if>
             <div class="panel-body">
                 <div class="col-sm-11 main">
                     <form action="uploadFile" method="post" enctype="multipart/form-data">

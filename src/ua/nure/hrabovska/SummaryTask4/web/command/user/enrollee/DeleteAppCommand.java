@@ -37,23 +37,21 @@ public class DeleteAppCommand extends Command {
         String[] cathedraIds = request.getParameterValues("cathedraId");
         LOG.trace("Set the request parameter: cathedraIds --> " + Arrays.toString(cathedraIds));
 
-
-        PageData pd = new SubmittedAppCommand().execute(request, response);
         if (cathedraIds != null) {
             ApplicationDAO applicationDAO = new ApplicationDAO();
-            Long[] cathedra_id_long = new Long[cathedraIds.length];
+            Long[] cathedraIdLong = new Long[cathedraIds.length];
             for (int i = 0; i < cathedraIds.length; i++) {
-                cathedra_id_long[i] = Long.parseLong(cathedraIds[i]);
+                cathedraIdLong[i] = Long.parseLong(cathedraIds[i]);
             }
 
-            if (applicationDAO.deleteApp(cathedra_id_long, enrollee.getId())) {
-                LOG.trace("All chosen books were deleted");
+            if (applicationDAO.deleteApp(cathedraIdLong, enrollee.getId())) {
+                LOG.trace("All chosen app were deleted");
                 LOG.debug("Commands finished");
-                return pd;
+                return new SubmittedAppCommand().execute(request, response);
             }
         }
         LOG.debug("Commands finished");
         request.setAttribute(RequestProperty.ERROR, Message.NOTHING_TO_DELETE);
-        return pd;
+        return new SubmittedAppCommand().execute(request, response);
     }
 }

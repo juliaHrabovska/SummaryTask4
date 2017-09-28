@@ -39,11 +39,11 @@ public class DepartmentDAO {
             statement = connection.prepareStatement(GET_ALL_PLACES);
             statement.setLong(1, university_id);
             resultSet = statement.executeQuery();
-            
+
             while (resultSet.next()) {
                 departmentList.add(extract(resultSet));
             }
-            
+
         } catch (SQLException e) {
             LOG.error(Message.CANNOT_FIND_DEPARTMENT, e);
             throw new DBException(Message.CANNOT_FIND_DEPARTMENT, e);

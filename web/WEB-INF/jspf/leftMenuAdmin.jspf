@@ -2,6 +2,5 @@
     <ul class="nav nav-sidebar">
         <li><a href="controller?command=showUser">All users</a></li>
         <li><a href="controller?command=showPlace">Applications</a></li>
-        <li><a href="controller?command=showPlace">Cathedra info</a></li>
     </ul>
 </div>

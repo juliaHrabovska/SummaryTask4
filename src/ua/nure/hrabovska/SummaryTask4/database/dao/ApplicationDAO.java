@@ -52,11 +52,12 @@ public class ApplicationDAO {
                     "res.enrollee_id = ?  " +
                     "           AND  " +
                     "        ex.name IN ( " +
-                    "            SELECT ex.name AS exam " +
-                    "               FROM requirements LEFT JOIN exam " +
+                    "            SELECT exam.name AS exam " +
+                    "               FROM requirements INNER JOIN exam " +
                     "                ON requirements.exam_id = exam.id " +
                     "               WHERE requirements.cathedra_id = ? " +
                     "               )";
+
     private static final String GET_SUBMETTED_APP_BEAN_BY_ENROLLEE_ID = "SELECT s.name AS status, u.name AS university,  " +
             "       tt.name AS type_of_training, d.name AS department,  " +
             "       c.name AS cathedra, c.id AS cathedra_id " +
@@ -91,6 +92,12 @@ public class ApplicationDAO {
 
     private static final String GET_APPLICATION =
             "SELECT * FROM application " +
+                    "       WHERE application.enrollee_id = ? " +
+                    "           AND " +
+                    "             application.cathedra_id = ?";
+
+    private static final String GET_APPLICATION_FOR_ENROLLEE =
+            "SELECT COUNT(1) AS count FROM application " +
                     "       WHERE application.enrollee_id = ? " +
                     "           AND " +
                     "             application.cathedra_id = ?";
@@ -133,6 +140,39 @@ public class ApplicationDAO {
         }
         return isUpdated;
 
+    }
+
+    /**
+     * Get application by enrollee and cathedra ids
+     *
+     * @param enrollee_id - enrollee's id
+     * @param cathedra_id - cathedra's id
+     * @return Application object
+     * @throws DBException
+     */
+    public int getByEnrolleeId(Long enrollee_id, long cathedra_id) throws DBException {
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        int application = -1;
+        try {
+            connection = DBManager.getConnection();
+            statement = connection.prepareStatement(GET_APPLICATION_FOR_ENROLLEE);
+            statement.setLong(1, enrollee_id);
+            statement.setLong(2, cathedra_id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                application = resultSet.getInt(Field.COUNT);
+            }
+        } catch (SQLException e) {
+            LOG.error(Message.CANNOT_GET_APPLICATION, e);
+            throw new DBException(Message.CANNOT_GET_APPLICATION, e);
+        } finally {
+            DBManager.closeStatement(statement);
+            DBManager.closeResultSet(resultSet);
+            DBManager.closeConnection(connection);
+        }
+        return application;
     }
 
     /**
@@ -232,6 +272,7 @@ public class ApplicationDAO {
             if (count == cathedra_ids.length) {
                 isDeleted = true;
             }
+            connection.commit();
         } catch (SQLException e) {
             DBManager.rollback(connection);
             LOG.error(Message.CANNOT_DELETE_APP, e);
